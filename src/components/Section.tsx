@@ -52,7 +52,7 @@ const Divider = styled.div`
 
 const Paragraph = styled.p`
   font-family: var(--body-font);
-  font-size: clamp(1em, 2vh, 1.2em);
+  font-size: clamp(1em, 2.5vh, 1.3em);
   line-height: 2;
   line-height: 1.8;
   color: var(--gray-dark-blue);
