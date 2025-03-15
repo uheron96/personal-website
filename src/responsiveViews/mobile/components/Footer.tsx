@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SecondaryButton } from "./SecondaryButton";
+import { SecondaryButton } from "../../../components/SecondaryButton";
 import { MenuBar } from "./MenuBar";
 
 export const Footer = () => {
@@ -12,7 +12,7 @@ export const Footer = () => {
           <SecondaryButton title="CONTACT ME" onClick={() => {}} />
         </ButtonContainer>
       </TopContainer>
-      <MenuBar type="footer"/>
+      <MenuBar type="footer" />
     </Container>
   );
 };
@@ -21,6 +21,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 const TopContainer = styled.div`

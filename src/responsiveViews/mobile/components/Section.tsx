@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SecondaryButton } from "./SecondaryButton";
+import { SecondaryButton } from "../../../components/SecondaryButton";
 
 type Props = {
   ref: React.RefObject<HTMLDivElement | null>;

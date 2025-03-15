@@ -12,10 +12,12 @@ export const MenuBar = ({ type }: Props) => {
 
   return (
     <Container type={type}>
-      {type === "footer" && <LogoImage />}
-      <TextButton>Home</TextButton>
-      <TextButton>Portfolio</TextButton>
-      <TextButton>Contact me</TextButton>
+      <TextContainer>
+        {type === "footer" && <LogoImage />}
+        <TextButton type={type}>HOME</TextButton>
+        <TextButton type={type}>PORTFOLIO</TextButton>
+        <TextButton type={type}>CONTACT ME</TextButton>
+      </TextContainer>
 
       {type === "footer" && (
         <SocialIconsContainer>
@@ -29,17 +31,25 @@ export const MenuBar = ({ type }: Props) => {
 
 const Container = styled.div<{ type: Props["type"] }>`
   display: flex;
-  flex-direction: column;
-  ${({ type }) => (type === "footer" ? "width: 100%;" : "width: 80%;")}
-  padding: 2em;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  background-color: var(--gray-dark-blue);
-  gap: 1em;
+
+  background-color: ${({ type }) =>
+    type === "footer" ? "var(--gray-dark-blue)" : "var(--base-color)"};
+  padding: ${({ type }) => (type === "footer" ? "2em" : "0em")};
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  align-items: center;
 `;
 
 const LogoImage = styled.div`
-  width: 4em;
-  height: 3em;
+  width: 3em;
+  height: 2em;
   background-color: var(--base-color);
   mask-image: url("/svg/logo.svg");
   mask-repeat: no-repeat;
@@ -53,9 +63,8 @@ const SocialIconsContainer = styled.div`
   display: flex;
   gap: 1em;
   flex-direction: row;
-  padding-top: 1em;
-  padding-bottom: 1em;
   align-items: center;
+  justify-content: center;
 `;
 
 const GithubImage = styled.div`
@@ -84,10 +93,12 @@ const LinkedinImage = styled.div`
   cursor: pointer;
 `;
 
-const TextButton = styled.div`
+const TextButton = styled.div<{ type?: Props["type"] }>`
+  color: ${({ type }) =>
+    type === "footer" ? "var(--base-color)" : "var(--gray-dark-blue)"};
+
   font-family: var(--body-font);
-  font-size: clamp(1em, 3vw, 1.4em);
-  color: var(--base-color);
+  font-size: clamp(0.8em, 2.5vw, 1em);
   letter-spacing: 0.17em;
   cursor: pointer;
   &:hover {

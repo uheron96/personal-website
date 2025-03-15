@@ -4,12 +4,17 @@ type Props = {
   title: string;
   onClick: () => void;
   disabled?: boolean;
+  narrow?: boolean;
 };
 
-export const PrimaryButton = ({ title, onClick, disabled }: Props) => {
+export const PrimaryButton = ({ title, onClick, disabled, narrow }: Props) => {
   return (
-    <Container onClick={disabled ? () => {} : onClick} disabled={disabled}>
-      <ImageContainer disabled={disabled}>
+    <Container
+      onClick={disabled ? () => {} : onClick}
+      disabled={disabled}
+      narrow={narrow}
+    >
+      <ImageContainer disabled={disabled} narrow={narrow}>
         <DownArrowsImage />
       </ImageContainer>
       <TextContainer>
@@ -19,12 +24,12 @@ export const PrimaryButton = ({ title, onClick, disabled }: Props) => {
   );
 };
 
-const Container = styled.div<{ disabled?: boolean }>`
+const Container = styled.div<{ disabled?: boolean; narrow?: boolean }>`
   background-color: ${({ disabled }) =>
     disabled
       ? "var(--primary-button-disabled-color)"
       : "var(--primary-button-color)"};
-  height: 7vh;
+  height: ${({ narrow }) => (narrow ? "5vh" : "7vh")};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -54,10 +59,10 @@ const ButtonText = styled.div`
   text-align: center;
 `;
 
-const ImageContainer = styled.div<{ disabled?: boolean }>`
+const ImageContainer = styled.div<{ disabled?: boolean; narrow?: boolean }>`
   background-color: ${({ disabled }) =>
     disabled ? "var(--gray)" : "var(--gray-dark-blue)"};
-  height: 7vh;
+  height: ${({ narrow }) => (narrow ? "5vh" : "7vh")};
   width: 7vh;
   display: flex;
   justify-content: center;
