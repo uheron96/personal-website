@@ -16,7 +16,7 @@ export const MenuBar = ({ type }: Props) => {
     <Container type={type}>
       {type === "footer" && <LogoImage />}
       <TextButton onClick={() => navigate("/")}>HOME</TextButton>
-      <TextButton onClick={() => navigate("portfolio")}>PORTFOLIO</TextButton>
+      <TextButton onClick={() => navigate("/portfolio")}>PORTFOLIO</TextButton>
       <TextButton>CONTACT ME</TextButton>
 
       {type === "footer" && (

@@ -16,8 +16,8 @@ root.render(
   <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="portfolio" element={<Portfolio />} />
-      <Route path={"project/:id"} element={<Project />} />
+      <Route path="/portfolio" element={<Portfolio />} />
+      <Route path={"/project/:id"} element={<Project />} />
     </Routes>
   </BrowserRouter>
 );
