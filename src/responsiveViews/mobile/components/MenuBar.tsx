@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 type Props = { type: "menu" | "footer" };
@@ -5,6 +6,7 @@ type Props = { type: "menu" | "footer" };
 export const MenuBar = ({ type }: Props) => {
   const githubLink = "https://github.com/uheron96";
   const linkedinLink = "https://www.linkedin.com/in/uliana-heron-4ab55a157/";
+  const navigate = useNavigate();
 
   const openInNewTab = (url: string) => {
     window.open(url, "_blank", "noreferrer");
@@ -13,8 +15,8 @@ export const MenuBar = ({ type }: Props) => {
   return (
     <Container type={type}>
       {type === "footer" && <LogoImage />}
-      <TextButton>HOME</TextButton>
-      <TextButton>PORTFOLIO</TextButton>
+      <TextButton onClick={() => navigate("/")}>HOME</TextButton>
+      <TextButton onClick={() => navigate("portfolio")}>PORTFOLIO</TextButton>
       <TextButton>CONTACT ME</TextButton>
 
       {type === "footer" && (
@@ -31,7 +33,8 @@ const Container = styled.div<{ type: Props["type"] }>`
   display: flex;
   flex-direction: column;
   ${({ type }) => (type === "footer" ? "width: 100%;" : "width: 80%;")}
-  padding: 2em;
+  padding:   ${({ type }) => (type === "footer" ? "2em 0em;" : "2em;")}
+ 2em 0em;
   align-items: center;
   background-color: var(--gray-dark-blue);
   gap: 1em;

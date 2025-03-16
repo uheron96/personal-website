@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import { MenuBar } from "./MenuBar";
+import { useNavigate } from "react-router";
 
 export const Header = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuPress = () => {
     setMenuIsOpen((prev) => !prev);
@@ -12,7 +14,7 @@ export const Header = () => {
 
   return (
     <Container>
-      <LogoImage src="/svg/logo.svg" alt="logo" />
+      <LogoImage src="/svg/logo.svg" alt="logo" onClick={() => navigate("/")} />
       <MenuImage
         src={menuIsOpen ? "/svg/close.svg" : "/svg/hamburger.svg"}
         alt="menu"

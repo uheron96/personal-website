@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 
 type Props = {
-  ref: React.RefObject<HTMLDivElement | null>;
+  ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
+  title: string;
   imageSrc: string;
+  narrowImage?: boolean;
   paragraph: string;
   buttonTitle: string;
   onClick: () => void;
@@ -16,12 +18,15 @@ export const Section = ({
   buttonTitle,
   imageSrc,
   onClick,
+  title,
   paragraph,
+  narrowImage,
 }: Props) => {
   return (
     <Container id={id} ref={ref}>
-      <Image src={imageSrc} alt="section image" />
+      <Image src={imageSrc} alt="section image" narrow={narrowImage} />
       <Divider />
+      <Title>{title}</Title>
       <Paragraph>{paragraph}</Paragraph>
       <ButtonContainer>
         <SecondaryButton title={buttonTitle} onClick={onClick} />
@@ -34,13 +39,28 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 2em;
 `;
 
-const Image = styled.img`
+const Title = styled.h1`
+  font-family: var(--display-font);
+  letter-spacing: -0.36px;
+  font-size: clamp(2em, 5vw, 3em);
+`;
+
+const Image = styled.img<{ narrow?: boolean }>`
   width: 100%;
-  height: auto;
+  height: ${({ narrow }) => (narrow ? "25vh" : "auto")};
+
+  ${({ narrow }) =>
+    narrow
+      ? `
+object-fit: cover;
+object-position: top;
+border-radius: 8px;
+`
+      : ""}
 `;
 
 const Divider = styled.div`
