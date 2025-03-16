@@ -4,9 +4,11 @@ import { PrimaryButton } from "../../components/PrimaryButton";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 
 export const HomeMobileView = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
+  let navigate = useNavigate();
 
   const scrollToAboutMe = () => {
     const { current } = aboutMeRef;
@@ -35,7 +37,7 @@ export const HomeMobileView = () => {
           id="about"
           imageSrc="/images/uliana-image.jpeg"
           buttonTitle="GO TO PORTFOLIO"
-          onClick={() => {}}
+          onClick={() => navigate('portfolio')}
           paragraph="I am a skilled software engineer with over 5 years of 
           experience building full-stack mobile and web applications for the 
           tech and healthcare industries. I have expertise in both front-end 

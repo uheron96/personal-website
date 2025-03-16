@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 
 type Props = {
-  ref: React.RefObject<HTMLDivElement | null>;
+  ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
   imageSrc: string;
   paragraph: string;
