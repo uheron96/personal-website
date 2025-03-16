@@ -38,7 +38,7 @@ export const HomeMobileView = () => {
           title="About me"
           imageSrc="/images/uliana-image.jpeg"
           buttonTitle="GO TO PORTFOLIO"
-          onClick={() => navigate('portfolio')}
+          onClick={() => navigate('/portfolio')}
           paragraph="I am a skilled software engineer with over 5 years of 
           experience building full-stack mobile and web applications for the 
           tech and healthcare industries. I have expertise in both front-end 
