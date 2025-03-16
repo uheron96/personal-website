@@ -46,7 +46,7 @@ const TopContainer = styled.div`
 const Title = styled.h1`
   font-family: var(--display-font);
   text-align: center;
-  font-size: clamp(2em, 3vw, 3em);
+  font-size: clamp(1.8em, 3vw, 3em);
   width: 30%;
 `;
 

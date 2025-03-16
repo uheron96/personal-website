@@ -2,13 +2,15 @@ import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 
 type Props = {
-  ref: React.RefObject<HTMLDivElement | null>;
+  ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
   imageSrc: string;
   paragraph: string;
+  title: string;
   buttonTitle: string;
   onClick: () => void;
   isWeb?: boolean;
+  extraSpacing?: boolean;
 };
 
 export const Section = ({
@@ -16,19 +18,22 @@ export const Section = ({
   id,
   buttonTitle,
   imageSrc,
+  title,
   onClick,
   paragraph,
   isWeb,
+  extraSpacing,
 }: Props) => {
   return (
     <Container id={id} ref={ref}>
       <Image src={imageSrc} alt="section image" isWeb={isWeb} />
-      <RightContainer>
+
+      {extraSpacing && <Separator />}
+      <RightContainer extraSpacing={extraSpacing}>
         <Inner>
-          <Title>About Me</Title>
+          <Title>{title}</Title>
           <Paragraph isWeb={isWeb}>{paragraph}</Paragraph>
         </Inner>
-
         <ButtonContainer>
           <SecondaryButton
             title={buttonTitle}
@@ -45,7 +50,11 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: stretch; /* Ensures both items match in height */
+  align-items: stretch;
+`;
+
+const Separator = styled.div`
+  width: 5em;
 `;
 
 const Image = styled.img<{ isWeb?: boolean }>`
@@ -53,7 +62,7 @@ const Image = styled.img<{ isWeb?: boolean }>`
   height: 100%;
 `;
 
-const RightContainer = styled.div`
+const RightContainer = styled.div<{ extraSpacing?: boolean }>`
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--gray);
@@ -61,8 +70,8 @@ const RightContainer = styled.div`
   margin-right: 2em;
   margin-left: 2em;
   gap: 1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
+  padding-bottom: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
   flex: 1;
   justify-content: space-between;
 `;

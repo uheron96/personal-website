@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { MenuBar } from "./MenuBar";
+import { useNavigate } from "react-router";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <LogoImage src="/svg/logo.svg" alt="logo" />
