@@ -35,6 +35,7 @@ export const HomeMobileView = () => {
         <Section
           ref={aboutMeRef}
           id="about"
+          title="About me"
           imageSrc="/images/uliana-image.jpeg"
           buttonTitle="GO TO PORTFOLIO"
           onClick={() => navigate('portfolio')}
