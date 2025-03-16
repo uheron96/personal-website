@@ -4,9 +4,11 @@ import styled from "styled-components";
 import { Header } from "./components/Header";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
+import { useNavigate } from "react-router";
 
 export const HomeWebView = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const scrollToAboutMe = () => {
     const { current } = aboutMeRef;
@@ -38,7 +40,8 @@ export const HomeWebView = () => {
           id="about"
           imageSrc="/images/uliana-image-long.jpeg"
           buttonTitle="GO TO PORTFOLIO"
-          onClick={() => {}}
+          title="ABOUT ME"
+          onClick={() => navigate("/portfolio")}
           paragraph="I am a skilled software engineer with over 5 years of 
                   experience building full-stack mobile and web applications for the 
                   tech and healthcare industries. I have expertise in both front-end 
@@ -50,7 +53,7 @@ export const HomeWebView = () => {
         />
       </Inner>
 
-      <Footer isWeb/>
+      <Footer isWeb />
     </Container>
   );
 };

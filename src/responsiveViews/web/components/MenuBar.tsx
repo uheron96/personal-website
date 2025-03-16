@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 type Props = { type: "menu" | "footer" };
@@ -5,6 +6,7 @@ type Props = { type: "menu" | "footer" };
 export const MenuBar = ({ type }: Props) => {
   const githubLink = "https://github.com/uheron96";
   const linkedinLink = "https://www.linkedin.com/in/uliana-heron-4ab55a157/";
+  const navigate = useNavigate();
 
   const openInNewTab = (url: string) => {
     window.open(url, "_blank", "noreferrer");
@@ -14,8 +16,12 @@ export const MenuBar = ({ type }: Props) => {
     <Container type={type}>
       <TextContainer>
         {type === "footer" && <LogoImage />}
-        <TextButton type={type}>HOME</TextButton>
-        <TextButton type={type}>PORTFOLIO</TextButton>
+        <TextButton onClick={() => navigate("/")} type={type}>
+          HOME
+        </TextButton>
+        <TextButton onClick={() => navigate("/portfolio")} type={type}>
+          PORTFOLIO
+        </TextButton>
         <TextButton type={type}>CONTACT ME</TextButton>
       </TextContainer>
 
