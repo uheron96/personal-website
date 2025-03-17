@@ -4,12 +4,14 @@ import { SecondaryButton } from "../../../components/SecondaryButton";
 type Props = {
   ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
-  title: string;
-  imageSrc: string;
+  title?: string;
+  subtitle?: string;
+  imageSrc?: string;
   narrowImage?: boolean;
-  paragraph: string;
-  buttonTitle: string;
-  onClick: () => void;
+  paragraph?: string;
+  buttonTitle?: string;
+  onClick?: () => void;
+  skillsDesciption?: string;
 };
 
 export const Section = ({
@@ -19,18 +21,26 @@ export const Section = ({
   imageSrc,
   onClick,
   title,
+  subtitle,
   paragraph,
   narrowImage,
+  skillsDesciption,
 }: Props) => {
   return (
     <Container id={id} ref={ref}>
-      <Image src={imageSrc} alt="section image" narrow={narrowImage} />
+      {imageSrc && (
+        <Image src={imageSrc} alt="section image" narrow={narrowImage} />
+      )}
       <Divider />
-      <Title>{title}</Title>
+      {title && <Title>{title}</Title>}
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
       <Paragraph>{paragraph}</Paragraph>
-      <ButtonContainer>
-        <SecondaryButton title={buttonTitle} onClick={onClick} />
-      </ButtonContainer>
+      {skillsDesciption && <SkillsText>{skillsDesciption}</SkillsText>}
+      {buttonTitle && onClick && (
+        <ButtonContainer>
+          <SecondaryButton title={buttonTitle} onClick={onClick} />
+        </ButtonContainer>
+      )}
     </Container>
   );
 };
@@ -47,6 +57,13 @@ const Title = styled.h1`
   font-family: var(--display-font);
   letter-spacing: -0.36px;
   font-size: clamp(2em, 5vw, 3em);
+`;
+
+const Subtitle = styled.h1`
+  font-family: var(--display-font);
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  font-size: clamp(2em, 4vw, 3em);
 `;
 
 const Image = styled.img<{ narrow?: boolean }>`
@@ -76,6 +93,14 @@ const Paragraph = styled.p`
   line-height: 2;
   line-height: 1.8;
   color: var(--gray-dark-blue);
+`;
+
+const SkillsText = styled.p`
+  font-family: var(--body-font);
+  font-size: clamp(1em, 2.5vh, 1.3em);
+  line-height: 2;
+  line-height: 1.8;
+  color: var(--dark-green);
 `;
 
 const ButtonContainer = styled.div`
