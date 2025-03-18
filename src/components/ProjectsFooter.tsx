@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { projectsData } from "../../../data/projects";
+import { projectsData } from "../data/projects";
 
 type Props = {
   nextProjectId?: string;

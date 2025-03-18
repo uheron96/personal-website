@@ -4,11 +4,14 @@ import { SecondaryButton } from "../../../components/SecondaryButton";
 type Props = {
   ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
-  imageSrc: string;
-  paragraph: string;
-  title: string;
-  buttonTitle: string;
-  onClick: () => void;
+  title?: string;
+  subtitle?: string;
+  imageSrc?: string;
+  narrowImage?: boolean;
+  paragraph?: string;
+  buttonTitle?: string;
+  onClick?: () => void;
+  skillsDesciption?: string;
   isWeb?: boolean;
   extraSpacing?: boolean;
 };
@@ -23,24 +26,30 @@ export const Section = ({
   paragraph,
   isWeb,
   extraSpacing,
+  subtitle,
+  skillsDesciption,
 }: Props) => {
   return (
     <Container id={id} ref={ref}>
-      <Image src={imageSrc} alt="section image" isWeb={isWeb} />
+      {imageSrc && <Image src={imageSrc} alt="section image" isWeb={isWeb} />}
 
       {extraSpacing && <Separator />}
       <RightContainer extraSpacing={extraSpacing}>
         <Inner>
-          <Title>{title}</Title>
+          {title && <Title>{title}</Title>}
+          {subtitle && <Subtitle>{subtitle}</Subtitle>}
           <Paragraph isWeb={isWeb}>{paragraph}</Paragraph>
+          {skillsDesciption && <SkillsText>{skillsDesciption}</SkillsText>}
         </Inner>
-        <ButtonContainer>
-          <SecondaryButton
-            title={buttonTitle}
-            onClick={onClick}
-            narrow={!isWeb}
-          />
-        </ButtonContainer>
+        {buttonTitle && onClick && (
+          <ButtonContainer>
+            <SecondaryButton
+              title={buttonTitle}
+              onClick={onClick}
+              narrow={!isWeb}
+            />
+          </ButtonContainer>
+        )}
       </RightContainer>
     </Container>
   );
@@ -60,6 +69,8 @@ const Separator = styled.div`
 const Image = styled.img<{ isWeb?: boolean }>`
   width: ${({ isWeb }) => (isWeb ? "50%" : "40%")};
   height: 100%;
+  align-self: ${({ isWeb }) => (isWeb ? "flex-start" : "center")};
+  margin-right: 2em;
 `;
 
 const RightContainer = styled.div<{ extraSpacing?: boolean }>`
@@ -67,8 +78,6 @@ const RightContainer = styled.div<{ extraSpacing?: boolean }>`
   flex-direction: column;
   border-top: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);
-  margin-right: 2em;
-  margin-left: 2em;
   gap: 1em;
   padding-top: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
   padding-bottom: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
@@ -99,4 +108,19 @@ const Paragraph = styled.p<{ isWeb?: boolean }>`
 const ButtonContainer = styled.div`
   width: 60%;
   align-self: flex-start;
+`;
+
+const Subtitle = styled.h1`
+  font-family: var(--display-font);
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  font-size: clamp(2em, 4vw, 3em);
+`;
+
+const SkillsText = styled.p`
+  font-family: var(--body-font);
+  font-size: clamp(1em, 2vh, 1.3em);
+  line-height: 2;
+  line-height: 1.8;
+  color: var(--dark-green);
 `;
