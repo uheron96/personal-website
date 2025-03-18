@@ -1,30 +1,43 @@
 import styled from "styled-components";
+import { projectsData } from "../../../data/projects";
 
 type Props = {
-  prevProjectName?: string;
-  nextProjectName?: string;
+  nextProjectId?: string;
+  prevProjectId?: string;
+
   onNextPress?: () => {};
   onPrevPress?: () => {};
 };
 
 export const ProjectsFooter = ({
   onPrevPress,
-  nextProjectName,
+  nextProjectId,
   onNextPress,
-  prevProjectName,
+  prevProjectId,
 }: Props) => {
+  const nextProject = projectsData.find((prj) => prj.id === nextProjectId);
+  const nextProjectName = nextProject && nextProject.title;
+  const nextProjectDisabled = !nextProject;
+  const prevProject = projectsData.find((prj) => prj.id === prevProjectId);
+  const prevProjectName = prevProject && prevProject.title;
+  const prevProjectDisabled = !prevProject;
+
   return (
     <Container>
       <ProjectContainer alignLeft>
-        <ArrowImage left />
-        <Title>{prevProjectName}</Title>
-        <Subtitle>Previous Project</Subtitle>
+        <ArrowImage left disabled={nextProjectDisabled} />
+        <Title disabled={nextProjectDisabled}>
+          {nextProjectName || "No projects"}
+        </Title>
+        <Subtitle disabled={nextProjectDisabled}>Previous Project</Subtitle>
       </ProjectContainer>
       <Divider />
       <ProjectContainer>
-        <ArrowImage />
-        <Title>{nextProjectName}</Title>
-        <Subtitle>Next Project</Subtitle>
+        <ArrowImage disabled={prevProjectDisabled} />
+        <Title disabled={prevProjectDisabled}>
+          {prevProjectName || "No projects"}
+        </Title>
+        <Subtitle disabled={prevProjectDisabled}>Next Project</Subtitle>
       </ProjectContainer>
     </Container>
   );
@@ -54,25 +67,28 @@ const Divider = styled.div`
   background-color: var(--gray);
 `;
 
-const Title = styled.h1`
+const Title = styled.h1<{ disabled?: boolean }>`
   font-family: var(--display-font);
+  color: ${({ disabled }) =>
+    disabled ? "var(--gray)" : "var(--gray-dark-blue)"};
   font-weight: 400;
   letter-spacing: -0.36px;
   font-size: clamp(2em, 4vw, 3em);
 `;
 
-const Subtitle = styled.h1`
+const Subtitle = styled.h1<{ disabled?: boolean }>`
   font-family: var(--body-font);
-  color: var(--dark-gray);
+  color: ${({ disabled }) => (disabled ? "var(--gray)" : "var(--dark-gray)")};
   font-weight: 200;
   letter-spacing: -0.36px;
   font-size: clamp(1.1em, 2vw, 1.3em);
 `;
 
-const ArrowImage = styled.div<{ left?: boolean }>`
+const ArrowImage = styled.div<{ left?: boolean; disabled?: boolean }>`
   width: 1.2em;
   height: 1.2em;
-  background-color: var(--gray-dark-blue);
+  background-color: ${({ disabled }) =>
+    disabled ? "var(--gray)" : "var(--dark-gray)"};
   mask-image: ${({ left }) =>
     left ? "url('/svg/arrow-left.svg')" : "url('/svg/arrow-right.svg')"};
   mask-repeat: no-repeat;
@@ -83,6 +99,7 @@ const ArrowImage = styled.div<{ left?: boolean }>`
   -webkit-mask-size: contain;
 
   ${ProjectContainer}:hover & {
-    background-color: var(--dark-green);
+    background-color: ${({ disabled }) =>
+      disabled ? "var(--gray)" : "var(--dark-green)"};
   }
 `;

@@ -37,7 +37,13 @@ export const ProjectMobileView = () => {
         <PreviewImage src={currentProject.previewImage1Url} />
         <PreviewImage src={currentProject.previewImage2Url} />
 
-        <ProjectsFooter nextProjectName="next" prevProjectName="prev" />
+        {currentProject.nextProject ||
+          (currentProject.prevProject && (
+            <ProjectsFooter
+              nextProjectId={currentProject.nextProject}
+              prevProjectId={currentProject.prevProject}
+            />
+          ))}
       </Inner>
       <Footer />
     </Container>
