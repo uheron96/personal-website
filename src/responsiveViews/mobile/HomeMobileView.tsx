@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
 import { Text } from "../../components/Text";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const HomeMobileView = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,11 @@ export const HomeMobileView = () => {
       <Header />
 
       <Inner>
-        <ProjectImage src="/images/image-homepage.jpg" alt="project image" />
+        <LazyLoadImage
+          alt="Project image"
+          height="auto"
+          src="/images/image-homepage.jpg"
+        />
 
         <Text type="Title">
           Hi, I'm Uliana – Experienced Full-Stack Web & Mobile Developer
