@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
+import { Text } from "../../../components/Text";
 
 type Props = {
   ref?: React.RefObject<HTMLDivElement | null>;
@@ -36,10 +37,10 @@ export const Section = ({
       {extraSpacing && <Separator />}
       <RightContainer extraSpacing={extraSpacing}>
         <Inner>
-          {title && <Title>{title}</Title>}
-          {subtitle && <Subtitle>{subtitle}</Subtitle>}
-          <Paragraph isWeb={isWeb}>{paragraph}</Paragraph>
-          {skillsDesciption && <SkillsText>{skillsDesciption}</SkillsText>}
+          {title && <Text type="Title">{title}</Text>}
+          {subtitle && <Text type="Subtitle">{subtitle}</Text>}
+          {paragraph && <Text type="Paragraph">{paragraph}</Text>}
+          {skillsDesciption && <Text type="Highlight">{skillsDesciption}</Text>}
         </Inner>
         {buttonTitle && onClick && (
           <ButtonContainer>
@@ -91,36 +92,7 @@ const Inner = styled.div`
   gap: 1em;
 `;
 
-const Title = styled.h1`
-  font-family: var(--display-font);
-  font-size: clamp(3em, 5vw, 3em);
-`;
-
-const Paragraph = styled.p<{ isWeb?: boolean }>`
-  font-family: var(--body-font);
-  font-size: ${({ isWeb }) =>
-    isWeb ? "clamp(1.5em, 3.5vh, 3em)" : "clamp(1em, 2vh, 3em)"};
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--gray-dark-blue);
-`;
-
 const ButtonContainer = styled.div`
   width: 60%;
   align-self: flex-start;
-`;
-
-const Subtitle = styled.h1`
-  font-family: var(--display-font);
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 4vw, 3em);
-`;
-
-const SkillsText = styled.p`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 2vh, 1.3em);
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--dark-green);
 `;

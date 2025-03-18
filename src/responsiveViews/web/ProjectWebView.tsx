@@ -5,6 +5,7 @@ import { projectsData } from "../../data/projects";
 import { useParams } from "react-router-dom";
 import { Section } from "./components/Section";
 import { ProjectsFooter } from "../../components/ProjectsFooter";
+import { Text } from "../../components/Text";
 
 export const ProjectWebView = () => {
   const { id } = useParams();
@@ -30,9 +31,9 @@ export const ProjectWebView = () => {
           />
         </InfoLeft>
         <InfoRight>
-          <Subtitle>Project Background</Subtitle>
-          <Paragraph>{currentProject.backgroundDescription}</Paragraph>
-          <Subtitle>Preview</Subtitle>
+          <Text type="Subtitle">Project Background</Text>
+          <Text type="Paragraph">{currentProject.backgroundDescription}</Text>
+          <Text type="Subtitle">Preview</Text>
           <PreviewImage src={currentProject.previewImage1Url} />
           <PreviewImage src={currentProject.previewImage2Url} />
         </InfoRight>
@@ -89,21 +90,6 @@ const PreviewImage = styled.img`
   border-radius: 8px;
 `;
 
-const Subtitle = styled.h1`
-  font-family: var(--display-font);
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 4vw, 3em);
-`;
-
 const ProjectsFooterContainer = styled.div`
   padding: 2em 4em;
-`;
-
-const Paragraph = styled.p`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 2vh, 3em);
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--gray-dark-blue);
 `;

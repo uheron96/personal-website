@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 import { MenuBar } from "./MenuBar";
+import { Text } from "../../../components/Text";
 
 export const Footer = () => {
   return (
     <Container>
       <Divider />
       <TopContainer>
-        <Title>Interested in doing a project together?</Title>
+        <Text type="Title" center>
+          Interested in doing a project together?
+        </Text>
         <ButtonContainer>
           <SecondaryButton title="CONTACT ME" onClick={() => {}} />
         </ButtonContainer>
@@ -39,12 +42,6 @@ const Divider = styled.div`
   height: 1.5px;
   background-color: var(--gray);
   border-radius: 16px;
-`;
-
-const Title = styled.h1`
-  font-family: var(--display-font);
-  text-align: center;
-  font-size: clamp(2em, 5vw, 3em);
 `;
 
 const ButtonContainer = styled.div`

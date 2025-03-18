@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { projectsData } from "../data/projects";
+import { Text } from "./Text";
 
 type Props = {
   nextProjectId?: string;
@@ -26,18 +27,22 @@ export const ProjectsFooter = ({
     <Container>
       <ProjectContainer alignLeft>
         <ArrowImage left disabled={nextProjectDisabled} />
-        <Title disabled={nextProjectDisabled}>
+        <Text type="Title" disabled={nextProjectDisabled}>
           {nextProjectName || "No projects"}
-        </Title>
-        <Subtitle disabled={nextProjectDisabled}>Previous Project</Subtitle>
+        </Text>
+        <Text type="Subtitle" disabled={nextProjectDisabled}>
+          Previous Project
+        </Text>
       </ProjectContainer>
       <Divider />
       <ProjectContainer>
         <ArrowImage disabled={prevProjectDisabled} />
-        <Title disabled={prevProjectDisabled}>
+        <Text type="Title" disabled={prevProjectDisabled}>
           {prevProjectName || "No projects"}
-        </Title>
-        <Subtitle disabled={prevProjectDisabled}>Next Project</Subtitle>
+        </Text>
+        <Text type="Subtitle" disabled={prevProjectDisabled}>
+          Next Project
+        </Text>
       </ProjectContainer>
     </Container>
   );
@@ -65,23 +70,6 @@ const Divider = styled.div`
   height: 5em;
   width: 0.05em;
   background-color: var(--gray);
-`;
-
-const Title = styled.h1<{ disabled?: boolean }>`
-  font-family: var(--display-font);
-  color: ${({ disabled }) =>
-    disabled ? "var(--gray)" : "var(--gray-dark-blue)"};
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 4vw, 3em);
-`;
-
-const Subtitle = styled.h1<{ disabled?: boolean }>`
-  font-family: var(--body-font);
-  color: ${({ disabled }) => (disabled ? "var(--gray)" : "var(--dark-gray)")};
-  font-weight: 200;
-  letter-spacing: -0.36px;
-  font-size: clamp(1.1em, 2vw, 1.3em);
 `;
 
 const ArrowImage = styled.div<{ left?: boolean; disabled?: boolean }>`

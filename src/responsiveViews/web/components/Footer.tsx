@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 import { MenuBar } from "./MenuBar";
+import { Text } from "../../../components/Text";
 
 type Props = { isWeb?: boolean };
 
@@ -8,7 +9,7 @@ export const Footer = ({ isWeb }: Props) => {
   return (
     <Container>
       <TopContainer>
-        <Title>Interested in doing a project together?</Title>
+        <Text type="Title">Interested in doing a project together?</Text>
         <Divider />
         <ButtonContainer>
           <SecondaryButton
@@ -41,13 +42,6 @@ const TopContainer = styled.div`
   padding: 3em;
   justify-content: space-between;
   gap: 2em;
-`;
-
-const Title = styled.h1`
-  font-family: var(--display-font);
-  text-align: center;
-  font-size: clamp(1.8em, 3vw, 3em);
-  width: 30%;
 `;
 
 const ButtonContainer = styled.div`
