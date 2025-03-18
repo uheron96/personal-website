@@ -1,28 +1,22 @@
-import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { useNavLinks } from "../../../utils/useNavLinks";
 
 type Props = { type: "menu" | "footer" };
 
 export const MenuBar = ({ type }: Props) => {
-  const githubLink = "https://github.com/uheron96";
-  const linkedinLink = "https://www.linkedin.com/in/uliana-heron-4ab55a157/";
-  const navigate = useNavigate();
-
-  const openInNewTab = (url: string) => {
-    window.open(url, "_blank", "noreferrer");
-  };
+  const { github, linkedIn, contactMe, home, portfolio } =
+    useNavLinks("var(--base-color)");
 
   return (
     <Container type={type}>
       {type === "footer" && <LogoImage />}
-      <TextButton onClick={() => navigate("/")}>HOME</TextButton>
-      <TextButton onClick={() => navigate("/portfolio")}>PORTFOLIO</TextButton>
-      <TextButton>CONTACT ME</TextButton>
-
+      {home}
+      {portfolio}
+      {contactMe}
       {type === "footer" && (
         <SocialIconsContainer>
-          <GithubImage onClick={() => openInNewTab(githubLink)} />
-          <LinkedinImage onClick={() => openInNewTab(linkedinLink)} />
+          {github}
+          {linkedIn}
         </SocialIconsContainer>
       )}
     </Container>
@@ -59,41 +53,4 @@ const SocialIconsContainer = styled.div`
   padding-top: 1em;
   padding-bottom: 1em;
   align-items: center;
-`;
-
-const GithubImage = styled.div`
-  width: 1.5em;
-  height: 1.5em;
-  background-color: var(--base-color);
-  mask-image: url("/svg/github.svg");
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  -webkit-mask-image: url("/svg/github.svg");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  cursor: pointer;
-`;
-
-const LinkedinImage = styled.div`
-  width: 1.5em;
-  height: 1.5em;
-  background-color: var(--base-color);
-  mask-image: url("/svg/linkedin.svg");
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  -webkit-mask-image: url("/svg/linkedin.svg");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  cursor: pointer;
-`;
-
-const TextButton = styled.div`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 3vw, 1.4em);
-  color: var(--base-color);
-  letter-spacing: 0.17em;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
 `;

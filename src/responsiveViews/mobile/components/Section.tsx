@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
+import { Text } from "../../../components/Text";
 
 type Props = {
   ref?: React.RefObject<HTMLDivElement | null>;
@@ -32,10 +33,10 @@ export const Section = ({
         <Image src={imageSrc} alt="section image" narrow={narrowImage} />
       )}
       <Divider />
-      {title && <Title>{title}</Title>}
-      {subtitle && <Subtitle>{subtitle}</Subtitle>}
-      <Paragraph>{paragraph}</Paragraph>
-      {skillsDesciption && <SkillsText>{skillsDesciption}</SkillsText>}
+      {title && <Text type="Title">{title}</Text>}
+      {subtitle && <Text type="Subtitle">{subtitle}</Text>}
+      {paragraph && <Text type="Paragraph">{paragraph}</Text>}
+      {skillsDesciption && <Text type="Highlight">{skillsDesciption}</Text>}
       {buttonTitle && onClick && (
         <ButtonContainer>
           <SecondaryButton title={buttonTitle} onClick={onClick} />
@@ -51,19 +52,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 2em;
-`;
-
-const Title = styled.h1`
-  font-family: var(--display-font);
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 5vw, 3em);
-`;
-
-const Subtitle = styled.h1`
-  font-family: var(--display-font);
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 4vw, 3em);
 `;
 
 const Image = styled.img<{ narrow?: boolean }>`
@@ -85,22 +73,6 @@ const Divider = styled.div`
   height: 1.5px;
   background-color: var(--gray);
   border-radius: 16px;
-`;
-
-const Paragraph = styled.p`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 2.5vh, 1.3em);
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--gray-dark-blue);
-`;
-
-const SkillsText = styled.p`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 2.5vh, 1.3em);
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--dark-green);
 `;
 
 const ButtonContainer = styled.div`

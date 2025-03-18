@@ -5,6 +5,7 @@ import { projectsData } from "../../data/projects";
 import { useParams } from "react-router-dom";
 import { Section } from "./components/Section";
 import { ProjectsFooter } from "../../components/ProjectsFooter";
+import { Text } from "../../components/Text";
 
 export const ProjectMobileView = () => {
   const { id } = useParams();
@@ -33,9 +34,14 @@ export const ProjectMobileView = () => {
           subtitle="Project Background"
         />
 
-        <Subtitle>Preview</Subtitle>
+        <Text type="Subtitle">Preview</Text>
         <PreviewImage src={currentProject.previewImage1Url} />
         <PreviewImage src={currentProject.previewImage2Url} />
+
+        <ProjectsFooter
+          nextProjectId={currentProject.nextProject}
+          prevProjectId={currentProject.prevProject}
+        />
 
         {currentProject.nextProject ||
           (currentProject.prevProject && (
@@ -61,11 +67,4 @@ const Inner = styled.div`
 
 const PreviewImage = styled.img`
   border-radius: 8px;
-`;
-
-const Subtitle = styled.h1`
-  font-family: var(--display-font);
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 4vw, 3em);
 `;

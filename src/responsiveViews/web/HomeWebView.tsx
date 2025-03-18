@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import { useNavigate } from "react-router";
+import { Text } from "../../components/Text";
 
 export const HomeWebView = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -25,9 +26,9 @@ export const HomeWebView = () => {
         <ImageContainer>
           <ProjectImage src="/images/image-homepage.jpg" alt="project image" />
           <TitleContainer>
-            <Title>
+            <Text type="Title">
               Hi, I'm Uliana – Experienced Full-Stack Web & Mobile Developer
-            </Title>
+            </Text>
             <ButtonContainer>
               <PrimaryButton title="ABOUT ME" onClick={scrollToAboutMe} />
             </ButtonContainer>
@@ -89,12 +90,6 @@ const TitleContainer = styled.div`
   padding: 2em;
   position: absolute;
   bottom: 0;
-`;
-
-const Title = styled.h1`
-  font-family: var(--display-font);
-  letter-spacing: -0.36px;
-  font-size: clamp(1.5em, 3.5vw, 2em);
 `;
 
 const ButtonContainer = styled.div`

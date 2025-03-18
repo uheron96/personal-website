@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { Section } from "./components/Section";
 import { ProjectsFooter } from "../../components/ProjectsFooter";
 import { SecondaryButton } from "../../components/SecondaryButton";
+import { Text } from "../../components/Text";
 
 export const ProjectTabletView = () => {
   const { id } = useParams();
@@ -20,8 +21,8 @@ export const ProjectTabletView = () => {
         <PreviewImage src={currentProject.narrowImage} />
         <ProjectInfo>
           <InfoLeft>
-            <Title>{currentProject?.title}</Title>
-            <SkillsText>{currentProject.skills}</SkillsText>
+            <Text type="Title">{currentProject?.title}</Text>
+            <Text type="Highlight">{currentProject?.skills}</Text>
             <ButtonContainer>
               <SecondaryButton
                 title={currentProject.buttonTitle}
@@ -30,7 +31,7 @@ export const ProjectTabletView = () => {
             </ButtonContainer>
           </InfoLeft>
           <InfoRight>
-            <Paragraph>{currentProject.description}</Paragraph>
+            <Text type="Paragraph">{currentProject.description}</Text>
           </InfoRight>
         </ProjectInfo>
 
@@ -40,7 +41,7 @@ export const ProjectTabletView = () => {
           subtitle="Project Background"
         />
 
-        <Subtitle>Preview</Subtitle>
+        <Text type="Subtitle">Preview</Text>
         <PreviewImage src={currentProject.previewImage1Url} />
         <PreviewImage src={currentProject.previewImage2Url} />
 
@@ -90,34 +91,6 @@ const PreviewImage = styled.img`
   border-radius: 8px;
 `;
 
-const Subtitle = styled.h1`
-  font-family: var(--display-font);
-  font-weight: 400;
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 4vw, 3em);
-`;
-
-const Title = styled.h1`
-  font-family: var(--display-font);
-  font-size: clamp(2em, 4vw, 2.5em);
-`;
-
-const SkillsText = styled.p`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 2vh, 1.3em);
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--dark-green);
-`;
-
 const ButtonContainer = styled.div`
   width: 70%;
-`;
-
-const Paragraph = styled.p`
-  font-family: var(--body-font);
-  font-size: clamp(1em, 2vh, 3em);
-  line-height: 2;
-  line-height: 1.8;
-  color: var(--gray-dark-blue);
 `;

@@ -5,6 +5,7 @@ import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
+import { Text } from "../../components/Text";
 
 export const HomeMobileView = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -24,9 +25,9 @@ export const HomeMobileView = () => {
       <Inner>
         <ProjectImage src="/images/image-homepage.jpg" alt="project image" />
 
-        <Title>
+        <Text type="Title">
           Hi, I'm Uliana – Experienced Full-Stack Web & Mobile Developer
-        </Title>
+        </Text>
 
         <ButtonContainer>
           <PrimaryButton title="ABOUT ME" onClick={scrollToAboutMe} />
@@ -35,10 +36,10 @@ export const HomeMobileView = () => {
         <Section
           ref={aboutMeRef}
           id="about"
-          title="About me"
+          title=" ABOUT ME"
           imageSrc="/images/uliana-image.jpeg"
           buttonTitle="GO TO PORTFOLIO"
-          onClick={() => navigate('/portfolio')}
+          onClick={() => navigate("/portfolio")}
           paragraph="I am a skilled software engineer with over 5 years of 
           experience building full-stack mobile and web applications for the 
           tech and healthcare industries. I have expertise in both front-end 
@@ -68,12 +69,6 @@ const Inner = styled.div`
 `;
 
 const ProjectImage = styled.img``;
-
-const Title = styled.h1`
-  font-family: var(--display-font);
-  letter-spacing: -0.36px;
-  font-size: clamp(2em, 5vw, 3em);
-`;
 
 const ButtonContainer = styled.div`
   width: 70%;
