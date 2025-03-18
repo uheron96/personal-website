@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { Section } from "./components/Section";
 import { ProjectsFooter } from "../../components/ProjectsFooter";
 
-export const ProjectMobileView = () => {
+export const ProjectWebView = () => {
   const { id } = useParams();
   const currentProject = projectsData.find((proj) => proj.id === id);
 
@@ -16,11 +16,11 @@ export const ProjectMobileView = () => {
     <Container>
       <Header />
       <Inner>
+        <PreviewImage src={currentProject.narrowImage} />
+
         <Section
           id={currentProject?.id}
           buttonTitle={currentProject.buttonTitle}
-          imageSrc={currentProject?.narrowImage}
-          narrowImage
           onClick={currentProject.buttonAction}
           paragraph={currentProject.description}
           title={currentProject?.title}
