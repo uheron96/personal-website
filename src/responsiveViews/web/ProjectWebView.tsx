@@ -15,36 +15,39 @@ export const ProjectWebView = () => {
   return (
     <Container>
       <Header />
-      <Inner>
+      <ImageContainer>
         <PreviewImage src={currentProject.narrowImage} />
+      </ImageContainer>
+      <Inner>
+        <InfoLeft>
+          <Section
+            id={currentProject.id}
+            title={currentProject.title}
+            paragraph={currentProject.description}
+            skillsDesciption={currentProject.skills}
+            buttonTitle={currentProject.buttonTitle}
+            onClick={currentProject.buttonAction}
+          />
+        </InfoLeft>
+        <InfoRight>
+          <Subtitle>Project Background</Subtitle>
+          <Paragraph>{currentProject.backgroundDescription}</Paragraph>
+          <Subtitle>Preview</Subtitle>
+          <PreviewImage src={currentProject.previewImage1Url} />
+          <PreviewImage src={currentProject.previewImage2Url} />
+        </InfoRight>
+      </Inner>
 
-        <Section
-          id={currentProject?.id}
-          buttonTitle={currentProject.buttonTitle}
-          onClick={currentProject.buttonAction}
-          paragraph={currentProject.description}
-          title={currentProject?.title}
-          skillsDesciption={currentProject.skills}
-        />
-
-        <Section
-          id={`${currentProject?.id}-background`}
-          paragraph={currentProject.backgroundDescription}
-          subtitle="Project Background"
-        />
-
-        <Subtitle>Preview</Subtitle>
-        <PreviewImage src={currentProject.previewImage1Url} />
-        <PreviewImage src={currentProject.previewImage2Url} />
-
-        {currentProject.nextProject ||
-          (currentProject.prevProject && (
+      {currentProject.nextProject ||
+        (currentProject.prevProject && (
+          <ProjectsFooterContainer>
             <ProjectsFooter
               nextProjectId={currentProject.nextProject}
               prevProjectId={currentProject.prevProject}
             />
-          ))}
-      </Inner>
+          </ProjectsFooterContainer>
+        ))}
+
       <Footer />
     </Container>
   );
@@ -54,12 +57,35 @@ const Container = styled.div``;
 
 const Inner = styled.div`
   display: flex;
+  flex-direction: row;
+  padding: 0em 4em;
+  gap: 4em;
+`;
+
+const InfoLeft = styled.div`
+  display: flex;
   flex-direction: column;
-  padding: 2em;
-  gap: 2em;
+  width: 50%;
+`;
+
+const InfoRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: -2em;
+  gap: 1.5em;
+`;
+
+const ImageContainer = styled.div`
+  margin: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const PreviewImage = styled.img`
+  width: 90%;
   border-radius: 8px;
 `;
 
@@ -68,4 +94,16 @@ const Subtitle = styled.h1`
   font-weight: 400;
   letter-spacing: -0.36px;
   font-size: clamp(2em, 4vw, 3em);
+`;
+
+const ProjectsFooterContainer = styled.div`
+  padding: 2em 4em;
+`;
+
+const Paragraph = styled.p`
+  font-family: var(--body-font);
+  font-size: clamp(1em, 2vh, 3em);
+  line-height: 2;
+  line-height: 1.8;
+  color: var(--gray-dark-blue);
 `;

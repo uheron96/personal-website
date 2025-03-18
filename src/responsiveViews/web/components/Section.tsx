@@ -27,6 +27,7 @@ export const Section = ({
   isWeb,
   extraSpacing,
   subtitle,
+  skillsDesciption,
 }: Props) => {
   return (
     <Container id={id} ref={ref}>
@@ -38,6 +39,7 @@ export const Section = ({
           {title && <Title>{title}</Title>}
           {subtitle && <Subtitle>{subtitle}</Subtitle>}
           <Paragraph isWeb={isWeb}>{paragraph}</Paragraph>
+          {skillsDesciption && <SkillsText>{skillsDesciption}</SkillsText>}
         </Inner>
         {buttonTitle && onClick && (
           <ButtonContainer>
@@ -113,4 +115,12 @@ const Subtitle = styled.h1`
   font-weight: 400;
   letter-spacing: -0.36px;
   font-size: clamp(2em, 4vw, 3em);
+`;
+
+const SkillsText = styled.p`
+  font-family: var(--body-font);
+  font-size: clamp(1em, 2vh, 1.3em);
+  line-height: 2;
+  line-height: 1.8;
+  color: var(--dark-green);
 `;

@@ -64,7 +64,7 @@ const Container = styled.div`
 `;
 
 const Inner = styled.div`
-  padding: 2em;
+  padding: 4em;
   display: flex;
   flex-direction: column;
   gap: 2em;
