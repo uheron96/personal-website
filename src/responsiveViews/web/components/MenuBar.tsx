@@ -8,10 +8,12 @@ export const MenuBar = ({ type }: Props) => {
     type === "footer" ? "var(--base-color)" : "var(--gray-dark-blue)"
   );
 
+  const { logo } = useNavLinks();
+
   return (
     <Container type={type}>
       <TextContainer>
-        {type === "footer" && <LogoImage />}
+        {type === "footer" && logo}
         {home}
         {portfolio}
         {contactMe}
@@ -43,18 +45,6 @@ const TextContainer = styled.div`
   flex-direction: row;
   gap: 2em;
   align-items: center;
-`;
-
-const LogoImage = styled.div`
-  width: 3em;
-  height: 2em;
-  background-color: var(--base-color);
-  mask-image: url("/svg/logo.svg");
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  -webkit-mask-image: url("/svg/logo.svg");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
 `;
 
 const SocialIconsContainer = styled.div`

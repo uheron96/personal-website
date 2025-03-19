@@ -3,7 +3,6 @@ import { SecondaryButton } from "../../../components/SecondaryButton";
 import { Text } from "../../../components/Text";
 
 type Props = {
-  ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
   title?: string;
   subtitle?: string;
@@ -13,26 +12,23 @@ type Props = {
   buttonTitle?: string;
   onClick?: () => void;
   skillsDesciption?: string;
-  isWeb?: boolean;
   extraSpacing?: boolean;
 };
 
 export const Section = ({
-  ref,
   id,
   buttonTitle,
   imageSrc,
   title,
   onClick,
   paragraph,
-  isWeb,
   extraSpacing,
   subtitle,
   skillsDesciption,
 }: Props) => {
   return (
-    <Container id={id} ref={ref}>
-      {imageSrc && <Image src={imageSrc} alt="section image" isWeb={isWeb} />}
+    <Container id={id}>
+      {imageSrc && <Image src={imageSrc} alt="section image" />}
 
       {extraSpacing && <Separator />}
       <RightContainer extraSpacing={extraSpacing}>
@@ -44,11 +40,7 @@ export const Section = ({
         </Inner>
         {buttonTitle && onClick && (
           <ButtonContainer>
-            <SecondaryButton
-              title={buttonTitle}
-              onClick={onClick}
-              narrow={!isWeb}
-            />
+            <SecondaryButton title={buttonTitle} onClick={onClick} />
           </ButtonContainer>
         )}
       </RightContainer>
@@ -68,20 +60,17 @@ const Separator = styled.div`
 `;
 
 const Image = styled.img<{ isWeb?: boolean }>`
-  width: ${({ isWeb }) => (isWeb ? "50%" : "40%")};
-  height: 100%;
-  align-self: ${({ isWeb }) => (isWeb ? "flex-start" : "center")};
-  margin-right: 2em;
+  width: 40%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
 `;
 
 const RightContainer = styled.div<{ extraSpacing?: boolean }>`
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--gray);
-  border-bottom: 1px solid var(--gray);
-  gap: 1em;
-  padding-top: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
-  padding-bottom: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
+  padding: 0em 4em;
   flex: 1;
   justify-content: space-between;
 `;
@@ -93,6 +82,7 @@ const Inner = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  margin-top: 1em;
   width: 60%;
   align-self: flex-start;
 `;

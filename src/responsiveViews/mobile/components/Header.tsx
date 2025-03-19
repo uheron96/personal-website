@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import { MenuBar } from "./MenuBar";
+import { useNavLinks } from "../../../utils/useNavLinks";
 
 export const Header = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -10,9 +11,11 @@ export const Header = () => {
     setMenuIsOpen((prev) => !prev);
   };
 
+  const { logoWithName } = useNavLinks();
+
   return (
     <Container>
-      <LogoImage src="/svg/logo.svg" alt="logo" />
+      {logoWithName}
       <MenuImage
         src={menuIsOpen ? "/svg/close.svg" : "/svg/hamburger.svg"}
         alt="menu"
@@ -40,13 +43,9 @@ const Container = styled.div`
 const MenuContainer = styled.div`
   display: flex;
   position: absolute;
+  z-index: 1;
   top: 5em;
   right: 2em;
-`;
-
-const LogoImage = styled.img`
-  width: 3em;
-  height: auto;
 `;
 
 const MenuImage = styled.img`

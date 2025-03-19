@@ -50,9 +50,9 @@ const Subtitle = styled.h1<{ disabled?: boolean; center?: boolean }>`
 
 const Paragraph = styled.p<{ green?: boolean }>`
   font-family: var(--body-font);
-  font-size: clamp(1.1em, 3vw, 1.4em);
+  font-size: clamp(1em, 3vw, 1.2em);
   line-height: 2;
   line-height: 1.8;
   color: ${({ green }) =>
-    green ? "var(--dark-green)" : "var(--gray-dark-blue)"};
+    green ? "var(--dark-green)" : "var(--gray-font)"};
 `;

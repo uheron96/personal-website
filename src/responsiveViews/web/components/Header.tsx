@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { MenuBar } from "./MenuBar";
 import { useNavigate } from "react-router";
+import { useNavLinks } from "../../../utils/useNavLinks";
 
 export const Header = () => {
-  const navigate = useNavigate();
+  const { logoWithName } = useNavLinks();
 
   return (
     <Container>
-      <LogoImage src="/svg/logo.svg" alt="logo" />
+      {logoWithName}
       <MenuContainer>
         <MenuBar type="menu" />
       </MenuContainer>
@@ -19,19 +20,13 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 2em 2em 0em;
+  padding: 4em 4em 0em;
 
   align-items: center;
 `;
 
 const MenuContainer = styled.div`
   display: flex;
-  flex-grow: 1; /* Allows it to grow instead of being limited to 50% */
-  justify-content: flex-end; /* Aligns MenuBar to the right */
-`;
-
-const LogoImage = styled.img`
-  width: 3em;
-  height: auto;
-  margin-right: auto; /* Pushes MenuContainer to the right */
+  flex-grow: 1;
+  justify-content: flex-end;
 `;
