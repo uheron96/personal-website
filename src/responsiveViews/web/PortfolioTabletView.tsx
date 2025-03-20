@@ -7,22 +7,27 @@ import { useNavigate } from "react-router";
 
 export const PortfolioTabletView = () => {
   const navigate = useNavigate();
+  let i = 0;
 
   return (
     <Container>
       <Header />
 
       <Inner>
-        {projectsData.map((project) => (
-          <Section
-            id={project.id}
-            buttonTitle="VIEW PROJECT"
-            imageSrc={project.imageUrl}
-            onClick={() => navigate(`/project/${project.id}`)}
-            paragraph={project.description}
-            title={project.title}
-          />
-        ))}
+        {projectsData.map((project) => {
+          i++;
+          return (
+            <Section
+              reverseLayout={!!(i % 2)}
+              id={project.id}
+              buttonTitle="VIEW PROJECT"
+              imageSrc={project.imageUrl}
+              onClick={() => navigate(`/project/${project.id}`)}
+              paragraph={project.description}
+              title={project.title}
+            />
+          );
+        })}
       </Inner>
 
       <Footer />
@@ -36,5 +41,5 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
-  padding: 2em;
+  padding: 4em;
 `;

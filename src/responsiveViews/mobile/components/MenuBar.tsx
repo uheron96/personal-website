@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { useNavLinks } from "../../../utils/useNavLinks";
+import { useNavigate } from "react-router";
 
 type Props = { type: "menu" | "footer" };
 
 export const MenuBar = ({ type }: Props) => {
-  const { github, linkedIn, contactMe, home, portfolio } =
+  const { github, linkedIn, contactMe, home, portfolio, logo } =
     useNavLinks("var(--base-color)");
+  const navigate = useNavigate();
 
   return (
     <Container type={type}>
-      {type === "footer" && <LogoImage />}
+      {type === "footer" && logo}
       {home}
       {portfolio}
       {contactMe}
@@ -30,20 +32,9 @@ const Container = styled.div<{ type: Props["type"] }>`
   padding:   ${({ type }) => (type === "footer" ? "2em 0em;" : "2em;")}
  2em 0em;
   align-items: center;
+  justify-content: center;
   background-color: var(--gray-dark-blue);
   gap: 1em;
-`;
-
-const LogoImage = styled.div`
-  width: 4em;
-  height: 3em;
-  background-color: var(--base-color);
-  mask-image: url("/svg/logo.svg");
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  -webkit-mask-image: url("/svg/logo.svg");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
 `;
 
 const SocialIconsContainer = styled.div`

@@ -21,39 +21,24 @@ export const HomeTabletView = () => {
   return (
     <Container>
       <Header />
-
       <Inner>
-        <ImageContainer>
-          <ProjectImage src="/images/image-homepage.jpg" alt="project image" />
-          <TitleContainer>
-            <Text type="Title">
-              Hi, I'm Uliana – Experienced Full-Stack Web & Mobile Developer
-            </Text>
-            <ButtonContainer>
-              <PrimaryButton
-                title="ABOUT ME"
-                onClick={scrollToAboutMe}
-                narrow
-              />
-            </ButtonContainer>
-          </TitleContainer>
-        </ImageContainer>
+        <Text type="Title">
+          Hi, I'm Uliana – Experienced Web & Mobile Developer
+        </Text>
 
         <Section
-          ref={aboutMeRef}
           id="about"
-          imageSrc="/images/uliana-image-long.jpeg"
-          buttonTitle="GO TO PORTFOLIO"
-          title="ABOUT ME"
-          onClick={() => navigate("/portfolio")}
+          imageSrc="/images/uliana-image.jpeg"
           paragraph="I am a skilled software engineer with over 5 years of 
-                  experience building full-stack mobile and web applications for the 
-                  tech and healthcare industries. I have expertise in both front-end 
-                  and back-end technologies, including React.js, React Native, CSS, 
-                  HTML, TypeScript, AWS, and RESTful APIs. I am passionate about 
-                  making impactful contributions, leading teams and projects, and 
-                  continuously pushing boundaries, all while prioritizing the delivery 
-                  of outstanding value to users and teams alike."
+          experience building full-stack mobile and web applications for the 
+          tech and healthcare industries. I have expertise in both front-end 
+          and back-end technologies, including React.js, React Native, CSS, 
+          HTML, TypeScript, AWS, and RESTful APIs. I am passionate about 
+          making impactful contributions, leading teams and projects, and 
+          continuously pushing boundaries, all while prioritizing the delivery 
+          of outstanding value to users and teams alike."
+          buttonTitle="GO TO PORTFOLIO"
+          onClick={() => navigate("/portfolio")}
         />
       </Inner>
 
@@ -72,27 +57,4 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
-`;
-
-const ProjectImage = styled.img``;
-
-const ImageContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
-
-const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: var(--base-color);
-  width: 60%;
-  gap: 2em;
-  padding: 2em;
-  position: absolute;
-  bottom: 0;
-`;
-
-const ButtonContainer = styled.div`
-  width: 60%;
 `;

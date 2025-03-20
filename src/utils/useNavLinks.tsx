@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-export const useNavLinks = (textButtonColor: string) => {
+export const useNavLinks = (textButtonColor?: string) => {
   const navigate = useNavigate();
 
   const githubLink = "https://github.com/uheron96";
@@ -14,9 +14,20 @@ export const useNavLinks = (textButtonColor: string) => {
   return {
     github: <GithubImage onClick={() => openInNewTab(githubLink)} />,
     linkedIn: <LinkedinImage onClick={() => openInNewTab(linkedinLink)} />,
+    logoWithName: (
+      <LogoWithNameImage
+        src="/svg/logo-with-name.svg"
+        alt="logo"
+        onClick={() => navigate("/")}
+      />
+    ),
+    logo: <LogoImage onClick={() => navigate("/")} />,
 
     home: (
-      <TextButton onClick={() => navigate("/")} buttonColor={textButtonColor}>
+      <TextButton
+        onClick={() => navigate("/")}
+        buttonColor={textButtonColor || "var(--gray-dark-blue)"}
+      >
         HOME
       </TextButton>
     ),
@@ -24,14 +35,17 @@ export const useNavLinks = (textButtonColor: string) => {
     portfolio: (
       <TextButton
         onClick={() => navigate("/portfolio")}
-        buttonColor={textButtonColor}
+        buttonColor={textButtonColor || "var(--gray-dark-blue)"}
       >
         PORTFOLIO
       </TextButton>
     ),
 
     contactMe: (
-      <TextButton onClick={() => {}} buttonColor={textButtonColor}>
+      <TextButton
+        onClick={() => {}}
+        buttonColor={textButtonColor || "var(--gray-dark-blue)"}
+      >
         CONTACT ME
       </TextButton>
     ),
@@ -74,4 +88,23 @@ const TextButton = styled.div<{ buttonColor: string }>`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const LogoWithNameImage = styled.img`
+  width: 7em;
+  height: auto;
+  margin-right: auto;
+`;
+
+
+const LogoImage = styled.div`
+  width: 2em;
+  height: 2em;
+  background-color: var(--base-color);
+  mask-image: url("/svg/logo.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-image: url("/svg/logo.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
 `;

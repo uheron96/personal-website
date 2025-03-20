@@ -1,57 +1,22 @@
-import { useRef } from "react";
-import { PrimaryButton } from "../../components/PrimaryButton";
 import styled from "styled-components";
 import { Header } from "./components/Header";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import { useNavigate } from "react-router";
-import { Text } from "../../components/Text";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 export const HomeWebView = () => {
-  const aboutMeRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  const scrollToAboutMe = () => {
-    const { current } = aboutMeRef;
-    if (current !== null) {
-      current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <Container>
       <Header />
 
       <Inner>
-        <ImageContainer>
-          <LazyLoadImage
-            visibleByDefault
-            effect="blur"
-            alt="Project image"
-       
-            width="100%"
-            src="/images/image-homepage.jpg"
-          />
-
-          <TitleContainer>
-            <Text type="Title">
-              Hi, I'm Uliana – Experienced Full-Stack Web & Mobile Developer
-            </Text>
-            <ButtonContainer>
-              <PrimaryButton title="ABOUT ME" onClick={scrollToAboutMe} />
-            </ButtonContainer>
-          </TitleContainer>
-        </ImageContainer>
-
         <Section
-          isWeb
-          ref={aboutMeRef}
           id="about"
-          imageSrc="/images/uliana-image-long.jpeg"
+          imageSrc="/images/uliana-image.jpeg"
           buttonTitle="GO TO PORTFOLIO"
-          title="ABOUT ME"
+          title="Hi, I'm Uliana – Experienced Web & Mobile Developer"
           onClick={() => navigate("/portfolio")}
           paragraph="I am a skilled software engineer with over 5 years of 
                   experience building full-stack mobile and web applications for the 
@@ -79,30 +44,4 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
-`;
-
-const ProjectImage = styled.img`
-  width: 100%;
-`;
-
-const ImageContainer = styled.div`
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
-
-const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: var(--base-color);
-  width: 60%;
-  gap: 2em;
-  padding: 2em;
-  position: absolute;
-  bottom: 0;
-`;
-
-const ButtonContainer = styled.div`
-  width: 60%;
 `;

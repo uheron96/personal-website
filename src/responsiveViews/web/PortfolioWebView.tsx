@@ -7,23 +7,28 @@ import { useNavigate } from "react-router";
 
 export const PortfolioWebView = () => {
   const navigate = useNavigate();
+  let i = 0;
 
   return (
     <Container>
       <Header />
 
       <Inner>
-        {projectsData.map((project) => (
-          <Section
-            id={project.id}
-            buttonTitle="VIEW PROJECT"
-            imageSrc={project.imageUrl}
-            onClick={() => navigate(`/project/${project.id}`)}
-            paragraph={project.description}
-            title={project.title}
-            extraSpacing
-          />
-        ))}
+        {projectsData.map((project) => {
+          i++;
+          return (
+            <Section
+              wideImage
+              reverseLayout={!!(i % 2)}
+              id={project.id}
+              buttonTitle="VIEW PROJECT"
+              imageSrc={project.imageUrl}
+              onClick={() => navigate(`/project/${project.id}`)}
+              paragraph={project.description}
+              title={project.title}
+            />
+          );
+        })}
       </Inner>
 
       <Footer />
@@ -36,6 +41,6 @@ const Container = styled.div``;
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2em;
-  padding: 4em 6em;
+  gap: 4em;
+  padding: 4em;
 `;

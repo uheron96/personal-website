@@ -3,39 +3,37 @@ import { SecondaryButton } from "../../../components/SecondaryButton";
 import { Text } from "../../../components/Text";
 
 type Props = {
-  ref?: React.RefObject<HTMLDivElement | null>;
   id: string;
   title?: string;
   subtitle?: string;
   imageSrc?: string;
-  narrowImage?: boolean;
   paragraph?: string;
   buttonTitle?: string;
   onClick?: () => void;
   skillsDesciption?: string;
-  isWeb?: boolean;
-  extraSpacing?: boolean;
+  reverseLayout?: boolean;
+  wideImage?: boolean;
 };
 
 export const Section = ({
-  ref,
   id,
   buttonTitle,
   imageSrc,
   title,
   onClick,
   paragraph,
-  isWeb,
-  extraSpacing,
   subtitle,
   skillsDesciption,
+  reverseLayout,
+  wideImage,
 }: Props) => {
   return (
-    <Container id={id} ref={ref}>
-      {imageSrc && <Image src={imageSrc} alt="section image" isWeb={isWeb} />}
+    <Container id={id}>
+      {!reverseLayout && imageSrc && (
+        <Image src={imageSrc} alt="section image" wideImage={wideImage} />
+      )}
 
-      {extraSpacing && <Separator />}
-      <RightContainer extraSpacing={extraSpacing}>
+      <RightContainer>
         <Inner>
           {title && <Text type="Title">{title}</Text>}
           {subtitle && <Text type="Subtitle">{subtitle}</Text>}
@@ -44,14 +42,14 @@ export const Section = ({
         </Inner>
         {buttonTitle && onClick && (
           <ButtonContainer>
-            <SecondaryButton
-              title={buttonTitle}
-              onClick={onClick}
-              narrow={!isWeb}
-            />
+            <SecondaryButton title={buttonTitle} onClick={onClick} />
           </ButtonContainer>
         )}
       </RightContainer>
+
+      {reverseLayout && imageSrc && (
+        <Image src={imageSrc} alt="section image" wideImage={wideImage} />
+      )}
     </Container>
   );
 };
@@ -60,28 +58,20 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  gap: 4em;
 `;
 
-const Separator = styled.div`
-  width: 5em;
+const Image = styled.img<{ wideImage?: boolean }>`
+  width: ${({ wideImage }) => (wideImage ? "60%" : "40%")};
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
 `;
 
-const Image = styled.img<{ isWeb?: boolean }>`
-  width: ${({ isWeb }) => (isWeb ? "50%" : "40%")};
-  height: 100%;
-  align-self: ${({ isWeb }) => (isWeb ? "flex-start" : "center")};
-  margin-right: 2em;
-`;
-
-const RightContainer = styled.div<{ extraSpacing?: boolean }>`
+const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--gray);
-  border-bottom: 1px solid var(--gray);
-  gap: 1em;
-  padding-top: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
-  padding-bottom: ${({ extraSpacing }) => (extraSpacing ? "4em" : "1em")};
   flex: 1;
   justify-content: space-between;
 `;
@@ -93,6 +83,7 @@ const Inner = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  margin-top: 1em;
   width: 60%;
   align-self: flex-start;
 `;
