@@ -1,22 +1,13 @@
-import { useRef } from "react";
-import { PrimaryButton } from "../../components/PrimaryButton";
 import styled from "styled-components";
 import { Header } from "./components/Header";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import { useNavigate } from "react-router";
 import { Text } from "../../components/Text";
+import { ProjectsPreview } from "../../components/ProjectsPreview";
 
 export const HomeTabletView = () => {
-  const aboutMeRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  const scrollToAboutMe = () => {
-    const { current } = aboutMeRef;
-    if (current !== null) {
-      current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <Container>
@@ -40,6 +31,10 @@ export const HomeTabletView = () => {
           buttonTitle="GO TO PORTFOLIO"
           onClick={() => navigate("/portfolio")}
         />
+
+        <PreviewContainer>
+          <ProjectsPreview />
+        </PreviewContainer>
       </Inner>
 
       <Footer />
@@ -57,4 +52,12 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
+`;
+
+const PreviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2em;
 `;

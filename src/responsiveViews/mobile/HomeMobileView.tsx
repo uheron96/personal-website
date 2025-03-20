@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
 import { Text } from "../../components/Text";
+import { ProjectsPreview } from "../../components/ProjectsPreview";
 
 export const HomeMobileView = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -40,6 +41,10 @@ export const HomeMobileView = () => {
         />
       </Inner>
 
+      <PreviewContainer>
+        <ProjectsPreview isMobile/>
+      </PreviewContainer>
+
       <Footer />
     </Container>
   );
@@ -58,15 +63,10 @@ const Inner = styled.div`
   position: relative;
 `;
 
-const TitleContainer = styled.div`
-  position: absolute;
-  background-color: var(--base-color);
-  bottom: 10;
-  z-index: 1;
-`;
-
-const ProjectImage = styled.img``;
-
-const ButtonContainer = styled.div`
-  width: 70%;
+const PreviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2em;
 `;

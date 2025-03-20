@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import { useNavigate } from "react-router";
+import { ProjectsPreview } from "../../components/ProjectsPreview";
 
 export const HomeWebView = () => {
   const navigate = useNavigate();
@@ -27,6 +28,10 @@ export const HomeWebView = () => {
                   continuously pushing boundaries, all while prioritizing the delivery 
                   of outstanding value to users and teams alike."
         />
+
+        <PreviewContainer>
+          <ProjectsPreview />
+        </PreviewContainer>
       </Inner>
 
       <Footer isWeb />
@@ -44,4 +49,12 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
+`;
+
+const PreviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4em;
 `;

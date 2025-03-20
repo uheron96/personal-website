@@ -33,7 +33,9 @@ const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 3em;
+  padding-bottom: 3em;
+  padding-right: 3em;
+  padding-left: 3em;
   justify-content: space-between;
   gap: 2em;
 `;
