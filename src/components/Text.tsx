@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type TextProps = {
-  type: "Title" | "Subtitle" | "Paragraph" | "Highlight";
+  type: "Title" | "Subtitle" | "Paragraph" | "Highlight" | "Header";
   children: string;
 
   disabled?: boolean;
@@ -26,6 +26,8 @@ export const Text = ({ type, disabled, children, center }: TextProps) => {
       return <Paragraph>{children}</Paragraph>;
     case "Highlight":
       return <Paragraph green>{children}</Paragraph>;
+    case "Header":
+      return <Header>{children}</Header>;
   }
 };
 
@@ -35,6 +37,7 @@ const Title = styled.h1<{ disabled?: boolean; center?: boolean }>`
   color: ${({ disabled }) =>
     disabled ? "var(--dark-gray)" : "var(--gray-dark-blue)"};
   ${({ center }) => center && "text-align: center"};
+  background-color: transparent;
 `;
 
 const Subtitle = styled.h1<{ disabled?: boolean; center?: boolean }>`
@@ -46,13 +49,21 @@ const Subtitle = styled.h1<{ disabled?: boolean; center?: boolean }>`
   color: ${({ disabled }) =>
     disabled ? "var(--dark-gray)" : "var(--gray-dark-blue)"};
   ${({ center }) => center && "text-align: center"};
+  background-color: transparent;
 `;
 
 const Paragraph = styled.p<{ green?: boolean }>`
   font-family: var(--body-font);
-  font-size: clamp(1em, 3vw, 1.2em);
   line-height: 2;
   line-height: 1.8;
-  color: ${({ green }) =>
-    green ? "var(--dark-green)" : "var(--gray-font)"};
+  color: ${({ green }) => (green ? "var(--dark-green)" : "var(--gray-font)")};
+  font-size: clamp(1em, 3vw, 1.3em);
+  background-color: transparent;
+`;
+
+const Header = styled.h1<{ disabled?: boolean; center?: boolean }>`
+  font-family: var(--display-font);
+  font-size: clamp(3em, 7vw, 4em);
+  color: var(--gray-dark-blue);
+  background-color: transparent;
 `;

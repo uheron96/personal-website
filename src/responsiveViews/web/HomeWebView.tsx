@@ -13,7 +13,6 @@ export const HomeWebView = () => {
 
       <Inner>
         <Section
-          extraSpacing
           id="about"
           imageSrc="/images/uliana-image.jpeg"
           buttonTitle="GO TO PORTFOLIO"

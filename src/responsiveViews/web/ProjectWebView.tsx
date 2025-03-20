@@ -17,13 +17,17 @@ export const ProjectWebView = () => {
     <Container>
       <Header />
       <ImageContainer>
-        <PreviewImage src={currentProject.narrowImage} />
+        <HeaderImage src={currentProject.narrowImage} />
+        <TitleContainer themeColor={currentProject.themeColor}>
+          <Text type="Header">{currentProject.title}</Text>
+          <Text type="Subtitle">{currentProject.subtitle}</Text>
+        </TitleContainer>
       </ImageContainer>
       <Inner>
         <InfoLeft>
           <Section
+            subtitle="Summary"
             id={currentProject.id}
-            title={currentProject.title}
             paragraph={currentProject.description}
             skillsDesciption={currentProject.skills}
             buttonTitle={currentProject.buttonTitle}
@@ -31,23 +35,24 @@ export const ProjectWebView = () => {
           />
         </InfoLeft>
         <InfoRight>
-          <Text type="Subtitle">Project Background</Text>
-          <Text type="Paragraph">{currentProject.backgroundDescription}</Text>
-          <Text type="Subtitle">Preview</Text>
-          <PreviewImage src={currentProject.previewImage1Url} />
-          <PreviewImage src={currentProject.previewImage2Url} />
+          <Section
+            subtitle="Project Background"
+            id={currentProject.id}
+            paragraph={currentProject.backgroundDescription}
+          />
         </InfoRight>
       </Inner>
+      <PreviewsContainer>
+        <PreviewImage src={currentProject.previewImage1Url} />
+        <PreviewImage src={currentProject.previewImage2Url} />
+      </PreviewsContainer>
 
-      {currentProject.nextProject ||
-        (currentProject.prevProject && (
-          <ProjectsFooterContainer>
-            <ProjectsFooter
-              nextProjectId={currentProject.nextProject}
-              prevProjectId={currentProject.prevProject}
-            />
-          </ProjectsFooterContainer>
-        ))}
+      <ProjectsFooterContainer>
+        <ProjectsFooter
+          nextProjectId={currentProject.nextProject}
+          prevProjectId={currentProject.prevProject}
+        />
+      </ProjectsFooterContainer>
 
       <Footer />
     </Container>
@@ -73,23 +78,51 @@ const InfoRight = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin-top: -2em;
   gap: 1.5em;
 `;
 
 const ImageContainer = styled.div`
-  margin: 4em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 4em 0em;
+  position: relative;
+`;
+
+const HeaderImage = styled.img`
+  width: 100%;
+  border-radius: 8px;
 `;
 
 const PreviewImage = styled.img`
-  width: 90%;
+  width: 50%;
+  max-height: 350px;
+  object-fit: contain;
   border-radius: 8px;
 `;
 
 const ProjectsFooterContainer = styled.div`
-  padding: 2em 4em;
+  padding: 1em 4em;
+`;
+
+const TitleContainer = styled.div<{ themeColor: string }>`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 20%;
+  top: 40%;
+  bottom: 4em;
+  gap: 0.5em;
+  background-color: ${({ themeColor }) => themeColor};
+`;
+
+const PreviewsContainer = styled.div`
+  border-top: solid 1px var(--gray);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  margin-top: 2em;
+  padding-top: 2em;
 `;

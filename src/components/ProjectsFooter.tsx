@@ -1,21 +1,14 @@
 import styled from "styled-components";
 import { projectsData } from "../data/projects";
 import { Text } from "./Text";
+import { useNavigate } from "react-router";
 
 type Props = {
   nextProjectId?: string;
   prevProjectId?: string;
-
-  onNextPress?: () => {};
-  onPrevPress?: () => {};
 };
 
-export const ProjectsFooter = ({
-  onPrevPress,
-  nextProjectId,
-  onNextPress,
-  prevProjectId,
-}: Props) => {
+export const ProjectsFooter = ({ nextProjectId, prevProjectId }: Props) => {
   const nextProject = projectsData.find((prj) => prj.id === nextProjectId);
   const nextProjectName = nextProject && nextProject.title;
   const nextProjectDisabled = !nextProject;
@@ -23,24 +16,34 @@ export const ProjectsFooter = ({
   const prevProjectName = prevProject && prevProject.title;
   const prevProjectDisabled = !prevProject;
 
+  const navigate = useNavigate();
+
+  const onNext = () => {
+    if (nextProject) navigate(`/project/${nextProject.id}`);
+  };
+
+  const onPrev = () => {
+    if (prevProject) navigate(`/project/${prevProject.id}`);
+  };
+
   return (
     <Container>
-      <ProjectContainer alignLeft>
-        <ArrowImage left disabled={nextProjectDisabled} />
-        <Text type="Title" disabled={nextProjectDisabled}>
-          {nextProjectName || "No projects"}
-        </Text>
-        <Text type="Subtitle" disabled={nextProjectDisabled}>
-          Previous Project
-        </Text>
-      </ProjectContainer>
-      <Divider />
-      <ProjectContainer>
-        <ArrowImage disabled={prevProjectDisabled} />
+      <ProjectContainer alignLeft onClick={onPrev}>
+        <ArrowImage left disabled={prevProjectDisabled} />
         <Text type="Title" disabled={prevProjectDisabled}>
           {prevProjectName || "No projects"}
         </Text>
         <Text type="Subtitle" disabled={prevProjectDisabled}>
+          Previous Project
+        </Text>
+      </ProjectContainer>
+      <Divider />
+      <ProjectContainer onClick={onNext}>
+        <ArrowImage disabled={nextProjectDisabled} />
+        <Text type="Title" disabled={nextProjectDisabled}>
+          {nextProjectName || "No projects"}
+        </Text>
+        <Text type="Subtitle" disabled={nextProjectDisabled}>
           Next Project
         </Text>
       </ProjectContainer>

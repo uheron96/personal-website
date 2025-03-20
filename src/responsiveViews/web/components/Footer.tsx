@@ -10,7 +10,7 @@ export const Footer = ({ isWeb }: Props) => {
     <Container>
       <TopContainer>
         <Text type="Title">Interested in doing a project together?</Text>
-        <Divider />
+
         <ButtonContainer>
           <SecondaryButton
             title="CONTACT ME"
@@ -27,12 +27,6 @@ export const Footer = ({ isWeb }: Props) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const Divider = styled.div`
-  height: 1.2px;
-  width: 20vw;
-  background-color: var(--gray);
 `;
 
 const TopContainer = styled.div`
