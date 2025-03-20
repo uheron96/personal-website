@@ -11,10 +11,10 @@ type Props = {
 export const ProjectsFooter = ({ nextProjectId, prevProjectId }: Props) => {
   const nextProject = projectsData.find((prj) => prj.id === nextProjectId);
   const nextProjectName = nextProject && nextProject.title;
-  const nextProjectDisabled = !nextProject;
+  const nextProjectDisabled = !nextProject || !nextProjectName;
   const prevProject = projectsData.find((prj) => prj.id === prevProjectId);
   const prevProjectName = prevProject && prevProject.title;
-  const prevProjectDisabled = !prevProject;
+  const prevProjectDisabled = !prevProject || !prevProjectName;
 
   const navigate = useNavigate();
 
@@ -30,21 +30,15 @@ export const ProjectsFooter = ({ nextProjectId, prevProjectId }: Props) => {
     <Container>
       <ProjectContainer alignLeft onClick={onPrev}>
         <ArrowImage left disabled={prevProjectDisabled} />
-        <Text type="Title" disabled={prevProjectDisabled}>
-          {prevProjectName || "No projects"}
-        </Text>
         <Text type="Subtitle" disabled={prevProjectDisabled}>
-          Previous Project
+          {prevProjectName || "No projects"}
         </Text>
       </ProjectContainer>
       <Divider />
       <ProjectContainer onClick={onNext}>
         <ArrowImage disabled={nextProjectDisabled} />
-        <Text type="Title" disabled={nextProjectDisabled}>
-          {nextProjectName || "No projects"}
-        </Text>
         <Text type="Subtitle" disabled={nextProjectDisabled}>
-          Next Project
+          {nextProjectName || "No projects"}
         </Text>
       </ProjectContainer>
     </Container>

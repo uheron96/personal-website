@@ -16,15 +16,22 @@ export const ProjectMobileView = () => {
   return (
     <Container>
       <Header />
+      <ImageContainer>
+        <ImageWrapper>
+          <HeaderImage src={currentProject.narrowImage} />
+        </ImageWrapper>
+
+        <TitleContainer themeColor={currentProject.themeColor}>
+          <Text type="Title">{currentProject.title}</Text>
+        </TitleContainer>
+      </ImageContainer>
+
       <Inner>
         <Section
           id={currentProject?.id}
           buttonTitle={currentProject.buttonTitle}
-          imageSrc={currentProject?.narrowImage}
-          narrowImage
           onClick={currentProject.buttonAction}
           paragraph={currentProject.description}
-          title={currentProject?.title}
           skillsDesciption={currentProject.skills}
         />
 
@@ -42,14 +49,6 @@ export const ProjectMobileView = () => {
           nextProjectId={currentProject.nextProject}
           prevProjectId={currentProject.prevProject}
         />
-
-        {currentProject.nextProject ||
-          (currentProject.prevProject && (
-            <ProjectsFooter
-              nextProjectId={currentProject.nextProject}
-              prevProjectId={currentProject.prevProject}
-            />
-          ))}
       </Inner>
       <Footer />
     </Container>
@@ -67,4 +66,48 @@ const Inner = styled.div`
 
 const PreviewImage = styled.img`
   border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+
+  &:hover {
+    transform: scale(1.3);
+  }
+`;
+
+const HeaderImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  transform: scale(1.3);
+`;
+
+const ImageWrapper = styled.div`
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  margin-top: 2em;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const TitleContainer = styled.div<{ themeColor: string }>`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  bottom: 4em;
+  gap: 0.5em;
+  background-color: ${({ themeColor }) => themeColor};
 `;
