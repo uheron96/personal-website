@@ -17,11 +17,17 @@ export const ProjectTabletView = () => {
   return (
     <Container>
       <Header />
+      <ImageContainer>
+        <HeaderImage src={currentProject.narrowImage} />
+        <TitleContainer themeColor={currentProject.themeColor}>
+          <Text type="Title">{currentProject.title}</Text>
+          <Text type="Subtitle">{currentProject.subtitle}</Text>
+        </TitleContainer>
+      </ImageContainer>
       <Inner>
-        <PreviewImage src={currentProject.narrowImage} />
         <ProjectInfo>
           <InfoLeft>
-            <Text type="Title">{currentProject?.title}</Text>
+            <Text type="Subtitle">Skills</Text>
             <Text type="Highlight">{currentProject?.skills}</Text>
             <ButtonContainer>
               <SecondaryButton
@@ -31,6 +37,7 @@ export const ProjectTabletView = () => {
             </ButtonContainer>
           </InfoLeft>
           <InfoRight>
+            <Text type="Subtitle">Overview</Text>
             <Text type="Paragraph">{currentProject.description}</Text>
           </InfoRight>
         </ProjectInfo>
@@ -45,13 +52,10 @@ export const ProjectTabletView = () => {
         <PreviewImage src={currentProject.previewImage1Url} />
         <PreviewImage src={currentProject.previewImage2Url} />
 
-        {currentProject.nextProject ||
-          (currentProject.prevProject && (
-            <ProjectsFooter
-              nextProjectId={currentProject.nextProject}
-              prevProjectId={currentProject.prevProject}
-            />
-          ))}
+        <ProjectsFooter
+          nextProjectId={currentProject.nextProject}
+          prevProjectId={currentProject.prevProject}
+        />
       </Inner>
       <Footer />
     </Container>
@@ -63,19 +67,22 @@ const Container = styled.div``;
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  padding: 0em 2em 2em;
   gap: 2em;
 `;
 
 const InfoLeft = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1em;
   width: 50%;
 `;
 
 const InfoRight = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 50%;
+  gap: 1em;
 `;
 
 const ProjectInfo = styled.div`
@@ -83,8 +90,6 @@ const ProjectInfo = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 2em;
-  border-top: 1px solid var(--gray);
-  padding-top: 1.5em;
 `;
 
 const PreviewImage = styled.img`
@@ -93,4 +98,29 @@ const PreviewImage = styled.img`
 
 const ButtonContainer = styled.div`
   width: 70%;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0em;
+  position: relative;
+`;
+
+const HeaderImage = styled.img`
+  width: 100%;
+  border-radius: 8px;
+`;
+
+const TitleContainer = styled.div<{ themeColor: string }>`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 20%;
+  top: 40%;
+  bottom: 4em;
+  gap: 0.5em;
+  background-color: ${({ themeColor }) => themeColor};
 `;
