@@ -10,7 +10,7 @@ export const HomeWebView = () => {
 
   return (
     <Container>
-      <Header />
+      <Header isWeb />
 
       <Inner>
         <Section
@@ -45,16 +45,24 @@ const Container = styled.div`
 `;
 
 const Inner = styled.div`
-  padding: 4em;
   display: flex;
   flex-direction: column;
   gap: 2em;
+  margin: 0 auto 2em;
+  padding: 4em 4em 0em;
+  max-width: 1440px;
+  box-sizing: border-box;
+  width: 100%;
 `;
 
 const PreviewContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  align-self: center;
+  width: 70%;
   padding-top: 4em;
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 4em;
 `;

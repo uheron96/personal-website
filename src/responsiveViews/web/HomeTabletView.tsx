@@ -52,6 +52,8 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: 2em;
 `;
 
 const PreviewContainer = styled.div`
