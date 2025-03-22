@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { MenuBar } from "./MenuBar";
-import { useNavigate } from "react-router";
 import { useNavLinks } from "../../../utils/useNavLinks";
 
-export const Header = () => {
+type Props = {
+  isWeb?: boolean;
+};
+
+export const Header = ({ isWeb }: Props) => {
   const { logoWithName } = useNavLinks();
 
   return (
-    <Container>
+    <Container isWeb={isWeb}>
       {logoWithName}
       <MenuContainer>
         <MenuBar type="menu" />
@@ -15,12 +18,13 @@ export const Header = () => {
     </Container>
   );
 };
-const Container = styled.div`
+
+const Container = styled.div<{ isWeb?: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 4em 4em 0em;
+  padding: ${({ isWeb }) => (isWeb ? "4em 4em 0em" : "2em 2em 0em")};
 
   align-items: center;
 `;

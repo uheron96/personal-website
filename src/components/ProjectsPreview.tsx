@@ -58,6 +58,6 @@ const Image = styled.img<{ isMobile?: boolean }>`
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   &:hover {
-    transform: ${({ isMobile }) => (isMobile ? "scale(1.5)" : "scale(1.1)")};
+    transform: ${({ isMobile }) => (isMobile ? "" : "scale(1.1)")};
   }
 `;

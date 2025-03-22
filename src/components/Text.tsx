@@ -44,7 +44,7 @@ const Subtitle = styled.h1<{ disabled?: boolean; center?: boolean }>`
   font-family: var(--display-font);
   font-weight: 400;
   letter-spacing: -0.36px;
-  font-size: clamp(1.5em, 4vw, 2em);
+  font-size: clamp(1.5em, 4vw, 1.9em);
 
   color: ${({ disabled }) =>
     disabled ? "var(--dark-gray)" : "var(--gray-dark-blue)"};
@@ -57,7 +57,7 @@ const Paragraph = styled.p<{ green?: boolean }>`
   line-height: 2;
   line-height: 1.8;
   color: ${({ green }) => (green ? "var(--dark-green)" : "var(--gray-font)")};
-  font-size: clamp(1em, 3vw, 1.3em);
+  font-size: clamp(1em, 3vw, 1.5em);
   background-color: transparent;
 `;
 
