@@ -38,7 +38,11 @@ export const Section = ({
           {title && <Text type="Title">{title}</Text>}
           {subtitle && <Text type="Subtitle">{subtitle}</Text>}
           {paragraph && <Text type="Paragraph">{paragraph}</Text>}
-          {skillsDesciption && <Text type="Highlight">{skillsDesciption}</Text>}
+          {skillsDesciption && (
+            <Text type="Highlight" highlightColor="green">
+              {skillsDesciption}
+            </Text>
+          )}
         </Inner>
         {buttonTitle && onClick && (
           <ButtonContainer>

@@ -14,9 +14,6 @@ export const PrimaryButton = ({ title, onClick, disabled, narrow }: Props) => {
       disabled={disabled}
       narrow={narrow}
     >
-      <ImageContainer disabled={disabled} narrow={narrow}>
-        <DownArrowsImage />
-      </ImageContainer>
       <TextContainer>
         <ButtonText>{title}</ButtonText>
       </TextContainer>

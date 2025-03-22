@@ -38,7 +38,7 @@ export const Section = ({
       )}
       {subtitle && <Text type="Subtitle">{subtitle}</Text>}
       {paragraph && <Text type="Paragraph">{paragraph}</Text>}
-      {skillsDesciption && <Text type="Highlight">{skillsDesciption}</Text>}
+      {skillsDesciption && <Text type="Highlight" highlightColor="green">{skillsDesciption}</Text>}
       {buttonTitle && onClick && (
         <ButtonContainer>
           <SecondaryButton title={buttonTitle} onClick={onClick} />

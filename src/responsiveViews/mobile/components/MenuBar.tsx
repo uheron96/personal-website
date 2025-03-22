@@ -5,8 +5,9 @@ import { useNavigate } from "react-router";
 type Props = { type: "menu" | "footer" };
 
 export const MenuBar = ({ type }: Props) => {
-  const { github, linkedIn, contactMe, home, portfolio, logo } =
-    useNavLinks("var(--base-color)");
+  const { github, linkedIn, contactMe, home, portfolio, logo } = useNavLinks({
+    textButtonColor: "var(--base-color)",
+  });
   const navigate = useNavigate();
 
   return (
