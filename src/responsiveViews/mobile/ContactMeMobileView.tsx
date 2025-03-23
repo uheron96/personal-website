@@ -6,7 +6,7 @@ import { useNavLinks } from "../../utils/useNavLinks";
 import { Form } from "../../components/Form";
 
 export const ContactMeMobileView = () => {
-  const { linkedIn, github } = useNavLinks({
+  const { linkedIn, github, download } = useNavLinks({
     iconColor: "var(--primary-button-color)",
   });
 
@@ -29,6 +29,7 @@ export const ContactMeMobileView = () => {
         <IconsRow>
           {github}
           {linkedIn}
+          {download}
         </IconsRow>
 
         <Divider />

@@ -6,7 +6,7 @@ import { useNavLinks } from "../../utils/useNavLinks";
 import { Form } from "../../components/Form";
 
 export const ContactMeWebView = () => {
-  const { linkedIn, github } = useNavLinks({
+  const { linkedIn, github, download } = useNavLinks({
     iconColor: "var(--primary-button-color)",
   });
 
@@ -34,6 +34,7 @@ export const ContactMeWebView = () => {
               <IconsRow>
                 {github}
                 {linkedIn}
+                {download}
               </IconsRow>
             </ParagraphContainer>
           </Row>

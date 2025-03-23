@@ -16,7 +16,17 @@ export const useNavLinks = ({ iconColor, textButtonColor }: Props) => {
     window.open(url, "_blank", "noreferrer");
   };
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/resume.pdf";
+    link.download = "Uliana_Heron_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return {
+    download: <CVImage onClick={handleDownload} iconColor={iconColor} />,
     github: (
       <GithubImage
         onClick={() => openInNewTab(githubLink)}
@@ -75,6 +85,19 @@ const GithubImage = styled.div<{ iconColor?: string }>`
   mask-repeat: no-repeat;
   mask-size: contain;
   -webkit-mask-image: url("/svg/github.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  cursor: pointer;
+`;
+
+const CVImage = styled.div<{ iconColor?: string }>`
+  width: clamp(2em, 4vw, 2.5em);
+  height: clamp(2em, 4vw, 2.5em);
+  background-color: ${({ iconColor }) => iconColor || "var(--base-color)"};
+  mask-image: url("/svg/cv.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-image: url("/svg/cv.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   cursor: pointer;
