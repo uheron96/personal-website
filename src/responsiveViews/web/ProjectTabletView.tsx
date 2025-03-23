@@ -28,7 +28,7 @@ export const ProjectTabletView = () => {
         <ProjectInfo>
           <InfoLeft>
             <Text type="Subtitle">Skills</Text>
-            <Text type="Highlight">{currentProject?.skills}</Text>
+            <Text type="Highlight" highlightColor="green">{currentProject?.skills}</Text>
             <ButtonContainer>
               <SecondaryButton
                 title={currentProject.buttonTitle}

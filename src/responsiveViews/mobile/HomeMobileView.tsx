@@ -1,23 +1,12 @@
-import { useRef } from "react";
 import { Header } from "./components/Header";
-import { PrimaryButton } from "../../components/PrimaryButton";
 import { Section } from "./components/Section";
 import { Footer } from "./components/Footer";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
-import { Text } from "../../components/Text";
 import { ProjectsPreview } from "../../components/ProjectsPreview";
 
 export const HomeMobileView = () => {
-  const aboutMeRef = useRef<HTMLDivElement>(null);
   let navigate = useNavigate();
-
-  const scrollToAboutMe = () => {
-    const { current } = aboutMeRef;
-    if (current !== null) {
-      current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <Container>
@@ -42,7 +31,7 @@ export const HomeMobileView = () => {
       </Inner>
 
       <PreviewContainer>
-        <ProjectsPreview isMobile/>
+        <ProjectsPreview isMobile />
       </PreviewContainer>
 
       <Footer />

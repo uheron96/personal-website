@@ -11,7 +11,7 @@ export const Header = () => {
     setMenuIsOpen((prev) => !prev);
   };
 
-  const { logoWithName } = useNavLinks();
+  const { logoWithName } = useNavLinks({});
 
   return (
     <Container>

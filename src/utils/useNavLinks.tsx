@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-export const useNavLinks = (textButtonColor?: string) => {
+type Props = {
+  textButtonColor?: string;
+  iconColor?: string;
+};
+
+export const useNavLinks = ({ iconColor, textButtonColor }: Props) => {
   const navigate = useNavigate();
 
-  const githubLink = "https://github.com/uheron96";
+  const githubLink = "https://github.com/uheron";
   const linkedinLink = "https://www.linkedin.com/in/uliana-heron-4ab55a157/";
 
   const openInNewTab = (url: string) => {
@@ -12,8 +17,18 @@ export const useNavLinks = (textButtonColor?: string) => {
   };
 
   return {
-    github: <GithubImage onClick={() => openInNewTab(githubLink)} />,
-    linkedIn: <LinkedinImage onClick={() => openInNewTab(linkedinLink)} />,
+    github: (
+      <GithubImage
+        onClick={() => openInNewTab(githubLink)}
+        iconColor={iconColor}
+      />
+    ),
+    linkedIn: (
+      <LinkedinImage
+        onClick={() => openInNewTab(linkedinLink)}
+        iconColor={iconColor}
+      />
+    ),
     logoWithName: (
       <LogoWithNameImage
         src="/svg/logo-with-name.svg"
@@ -43,7 +58,7 @@ export const useNavLinks = (textButtonColor?: string) => {
 
     contactMe: (
       <TextButton
-        onClick={() => {}}
+        onClick={() => navigate("/contactMe")}
         buttonColor={textButtonColor || "var(--gray-dark-blue)"}
       >
         CONTACT ME
@@ -52,10 +67,10 @@ export const useNavLinks = (textButtonColor?: string) => {
   };
 };
 
-const GithubImage = styled.div`
-  width: 1.5em;
-  height: 1.5em;
-  background-color: var(--base-color);
+const GithubImage = styled.div<{ iconColor?: string }>`
+  width: clamp(2em, 4vw, 2.5em);
+  height: clamp(2em, 4vw, 2.5em);
+  background-color: ${({ iconColor }) => iconColor || "var(--base-color)"};
   mask-image: url("/svg/github.svg");
   mask-repeat: no-repeat;
   mask-size: contain;
@@ -65,10 +80,10 @@ const GithubImage = styled.div`
   cursor: pointer;
 `;
 
-const LinkedinImage = styled.div`
-  width: 1.5em;
-  height: 1.5em;
-  background-color: var(--base-color);
+const LinkedinImage = styled.div<{ iconColor?: string }>`
+  width: clamp(2em, 4vw, 2.5em);
+  height: clamp(2em, 4vw, 2.5em);
+  background-color: ${({ iconColor }) => iconColor || "var(--base-color)"};
   mask-image: url("/svg/linkedin.svg");
   mask-repeat: no-repeat;
   mask-size: contain;
@@ -91,15 +106,14 @@ const TextButton = styled.div<{ buttonColor: string }>`
 `;
 
 const LogoWithNameImage = styled.img`
-  width: 7em;
+  width: clamp(6em, 10vw, 10em);
   height: auto;
   margin-right: auto;
 `;
 
-
 const LogoImage = styled.div`
-  width: 2em;
-  height: 2em;
+  width: clamp(2em, 3vw, 3em);
+  height: clamp(2em, 3vw, 3em);
   background-color: var(--base-color);
   mask-image: url("/svg/logo.svg");
   mask-repeat: no-repeat;

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { useNavLinks } from "../../../utils/useNavLinks";
-import { useNavigate } from "react-router";
 
 type Props = { type: "menu" | "footer" };
 
 export const MenuBar = ({ type }: Props) => {
-  const { github, linkedIn, contactMe, home, portfolio, logo } =
-    useNavLinks("var(--base-color)");
-  const navigate = useNavigate();
+  const { github, linkedIn, contactMe, home, portfolio, logo } = useNavLinks({
+    textButtonColor: "var(--base-color)",
+  });
 
   return (
     <Container type={type}>

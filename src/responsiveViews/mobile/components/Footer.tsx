@@ -2,19 +2,32 @@ import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 import { MenuBar } from "./MenuBar";
 import { Text } from "../../../components/Text";
+import { useNavigate } from "react-router";
 
-export const Footer = () => {
+type Props = {
+  removeContactOption?: boolean;
+};
+
+export const Footer = ({ removeContactOption }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Divider />
-      <TopContainer>
-        <Text type="Title" center>
-          Interested in doing a project together?
-        </Text>
-        <ButtonContainer>
-          <SecondaryButton title="CONTACT ME" onClick={() => {}} />
-        </ButtonContainer>
-      </TopContainer>
+      {!removeContactOption && (
+        <TopContainer>
+          <Text type="Title" center>
+            Interested in doing a project together?
+          </Text>
+          <ButtonContainer>
+            <SecondaryButton
+              title="CONTACT ME"
+              onClick={() => navigate("/contactMe")}
+            />
+          </ButtonContainer>
+        </TopContainer>
+      )}
+
       <MenuBar type="footer" />
     </Container>
   );

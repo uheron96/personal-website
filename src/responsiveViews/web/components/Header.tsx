@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Header = ({ isWeb }: Props) => {
-  const { logoWithName } = useNavLinks();
+  const { logoWithName } = useNavLinks({});
 
   return (
     <Container isWeb={isWeb}>

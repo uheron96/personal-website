@@ -4,11 +4,20 @@ type TextProps = {
   type: "Title" | "Subtitle" | "Paragraph" | "Highlight" | "Header";
   children: string;
 
+  highlightColor?: "green" | "red";
   disabled?: boolean;
   center?: boolean;
 };
 
-export const Text = ({ type, disabled, children, center }: TextProps) => {
+export const Text = ({
+  type,
+  disabled,
+  children,
+  center,
+  highlightColor,
+}: TextProps) => {
+  const highlightColorVar =
+    highlightColor === "green" ? "var(--dark-green)" : "var(--red)";
   switch (type) {
     case "Title":
       return (
@@ -25,7 +34,9 @@ export const Text = ({ type, disabled, children, center }: TextProps) => {
     case "Paragraph":
       return <Paragraph>{children}</Paragraph>;
     case "Highlight":
-      return <Paragraph green>{children}</Paragraph>;
+      return (
+        <Paragraph highlightColor={highlightColorVar}>{children}</Paragraph>
+      );
     case "Header":
       return <Header>{children}</Header>;
   }
@@ -52,11 +63,11 @@ const Subtitle = styled.h1<{ disabled?: boolean; center?: boolean }>`
   background-color: transparent;
 `;
 
-const Paragraph = styled.p<{ green?: boolean }>`
+const Paragraph = styled.p<{ highlightColor?: string }>`
   font-family: var(--body-font);
   line-height: 2;
   line-height: 1.8;
-  color: ${({ green }) => (green ? "var(--dark-green)" : "var(--gray-font)")};
+  color: ${({ highlightColor }) => highlightColor || "var(--gray-font)"};
   font-size: clamp(1em, 3vw, 1.5em);
   background-color: transparent;
 `;
