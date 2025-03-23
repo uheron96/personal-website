@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 import { MenuBar } from "./MenuBar";
 import { Text } from "../../../components/Text";
+import { useNavigate } from "react-router";
 
 type Props = {
   removeContactOption?: boolean;
 };
 
 export const Footer = ({ removeContactOption }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Divider />
@@ -17,7 +20,10 @@ export const Footer = ({ removeContactOption }: Props) => {
             Interested in doing a project together?
           </Text>
           <ButtonContainer>
-            <SecondaryButton title="CONTACT ME" onClick={() => {}} />
+            <SecondaryButton
+              title="CONTACT ME"
+              onClick={() => navigate("/contactMe")}
+            />
           </ButtonContainer>
         </TopContainer>
       )}

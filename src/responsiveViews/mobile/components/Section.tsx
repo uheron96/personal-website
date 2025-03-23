@@ -38,7 +38,11 @@ export const Section = ({
       )}
       {subtitle && <Text type="Subtitle">{subtitle}</Text>}
       {paragraph && <Text type="Paragraph">{paragraph}</Text>}
-      {skillsDesciption && <Text type="Highlight" highlightColor="green">{skillsDesciption}</Text>}
+      {skillsDesciption && (
+        <Text type="Highlight" highlightColor="green">
+          {skillsDesciption}
+        </Text>
+      )}
       {buttonTitle && onClick && (
         <ButtonContainer>
           <SecondaryButton title={buttonTitle} onClick={onClick} />
@@ -62,13 +66,6 @@ const Image = styled.img<{ narrow?: boolean }>`
   object-fit: cover;
   object-position: top;
   border-radius: 8px;
-`;
-
-const Divider = styled.div`
-  width: 100%;
-  height: 1.5px;
-  background-color: var(--gray);
-  border-radius: 16px;
 `;
 
 const ButtonContainer = styled.div`

@@ -1,16 +1,14 @@
 import useCheckDeviceScreen from "../utils/useCheckDeviceScreen";
-import { HomeMobileView } from "../responsiveViews/mobile/HomeMobileView";
-import { HomeTabletView } from "../responsiveViews/web/HomeTabletView";
-import { HomeWebView } from "../responsiveViews/web/HomeWebView";
 import { ContactMeMobileView } from "../responsiveViews/mobile/ContactMeMobileView";
+import { ContactMeWebView } from "../responsiveViews/web/ContactMeWebView";
 
 export const ContactMe = () => {
   const { isMobile, isTablet, isDesktop } = useCheckDeviceScreen();
 
   const ScreenContent = () => {
     if (isMobile) return <ContactMeMobileView />;
-    /*  if (isTablet) return <HomeTabletView />;
-    if (isDesktop) return <HomeWebView />; */
+    if (isTablet) return <ContactMeMobileView />;
+    if (isDesktop) return <ContactMeWebView />;
     return null;
   };
 

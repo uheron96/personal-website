@@ -40,7 +40,7 @@ const Container = styled.div`
 
 const FormInput = styled.input`
   flex: 1;
-  height: 4em;
+  height: 3em;
   background-color: var(--gray);
   padding-left: 2em;
   border: 1px solid var(--gray);

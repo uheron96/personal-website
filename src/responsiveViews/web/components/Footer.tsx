@@ -2,23 +2,29 @@ import styled from "styled-components";
 import { SecondaryButton } from "../../../components/SecondaryButton";
 import { MenuBar } from "./MenuBar";
 import { Text } from "../../../components/Text";
+import { useNavigate } from "react-router";
 
-type Props = { isWeb?: boolean };
+type Props = { isWeb?: boolean; removeContactOption?: boolean };
 
-export const Footer = ({ isWeb }: Props) => {
+export const Footer = ({ isWeb, removeContactOption }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
-      <TopContainer>
-        <Text type="Title">Interested in doing a project together?</Text>
+      {!removeContactOption && (
+        <TopContainer>
+          <Text type="Title">Interested in doing a project together?</Text>
 
-        <ButtonContainer>
-          <SecondaryButton
-            title="CONTACT ME"
-            onClick={() => {}}
-            narrow={!isWeb}
-          />
-        </ButtonContainer>
-      </TopContainer>
+          <ButtonContainer>
+            <SecondaryButton
+              title="CONTACT ME"
+              onClick={() => navigate("/contactMe")}
+              narrow={!isWeb}
+            />
+          </ButtonContainer>
+        </TopContainer>
+      )}
+
       <MenuBar type="footer" />
     </Container>
   );

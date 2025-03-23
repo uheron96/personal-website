@@ -36,11 +36,18 @@ export const PortfolioWebView = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 2em 2em;
+`;
 
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4em;
-  padding: 4em;
+  padding: 4em 2em;
+  max-width: 1440px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
 `;

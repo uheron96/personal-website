@@ -31,6 +31,8 @@ export const ContactMeMobileView = () => {
           {linkedIn}
         </IconsRow>
 
+        <Divider />
+        <Text type="Title">Contact Me</Text>
         <Form />
       </Inner>
 
@@ -52,4 +54,10 @@ const IconsRow = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1em;
+`;
+
+const Divider = styled.div`
+  width: 100%;
+  background-color: var(--gray);
+  height: 1px;
 `;

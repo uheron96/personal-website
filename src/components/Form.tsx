@@ -78,66 +78,63 @@ export const Form = () => {
   };
 
   return (
-    <Container>
-      <Text type="Title">Contact Me</Text>
-      <Container onSubmit={handleSubmit}>
-        <InputContainer>
-          <Text type="Paragraph">Name</Text>
-          <Input
-            name="name"
-            type="text"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="John Snow"
-            required
-          />
-          {errors.name && (
-            <Text type="Highlight" highlightColor="red">
-              {errors.name}
-            </Text>
-          )}
-        </InputContainer>
+    <Container onSubmit={handleSubmit}>
+      <InputContainer>
+        <Text type="Paragraph">Name</Text>
+        <Input
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="John Snow"
+          required
+        />
+        {errors.name && (
+          <Text type="Highlight" highlightColor="red">
+            {errors.name}
+          </Text>
+        )}
+      </InputContainer>
 
-        <InputContainer>
-          <Text type="Paragraph">Email Address</Text>
-          <Input
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="john-snow@gmail.com"
-            required
-          />
-          {errors.email && (
-            <Text type="Highlight" highlightColor="red">
-              {errors.email}
-            </Text>
-          )}
-        </InputContainer>
+      <InputContainer>
+        <Text type="Paragraph">Email Address</Text>
+        <Input
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="john-snow@gmail.com"
+          required
+        />
+        {errors.email && (
+          <Text type="Highlight" highlightColor="red">
+            {errors.email}
+          </Text>
+        )}
+      </InputContainer>
 
-        <InputContainer>
-          <Text type="Paragraph">Message</Text>
-          <MessageInput
-            name="message"
-            onChange={handleChange}
-            placeholder="Leave your message here..."
-            value={formData.message}
-          />
-          {errors.message && (
-            <Text type="Highlight" highlightColor="red">
-              {errors.message}
-            </Text>
-          )}
-        </InputContainer>
+      <InputContainer>
+        <Text type="Paragraph">Message</Text>
+        <MessageInput
+          name="message"
+          onChange={handleChange}
+          placeholder="Leave your message here..."
+          value={formData.message}
+        />
+        {errors.message && (
+          <Text type="Highlight" highlightColor="red">
+            {errors.message}
+          </Text>
+        )}
+      </InputContainer>
 
-        <ButtonContainer>
-          <PrimaryButton
-            onClick={() => handleSubmit()}
-            title="SEND MESSAGE"
-            disabled={loadingSubmission}
-          />
-        </ButtonContainer>
-      </Container>
+      <ButtonContainer>
+        <PrimaryButton
+          onClick={() => handleSubmit()}
+          title="SEND MESSAGE"
+          disabled={loadingSubmission}
+        />
+      </ButtonContainer>
     </Container>
   );
 };
