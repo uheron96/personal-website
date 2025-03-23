@@ -4,9 +4,10 @@ import { useNavLinks } from "../../../utils/useNavLinks";
 type Props = { type: "menu" | "footer" };
 
 export const MenuBar = ({ type }: Props) => {
-  const { github, linkedIn, contactMe, home, portfolio, logo } = useNavLinks({
-    textButtonColor: "var(--base-color)",
-  });
+  const { github, linkedIn, contactMe, home, portfolio, logo, download } =
+    useNavLinks({
+      textButtonColor: "var(--base-color)",
+    });
 
   return (
     <Container type={type}>
@@ -18,6 +19,7 @@ export const MenuBar = ({ type }: Props) => {
         <SocialIconsContainer>
           {github}
           {linkedIn}
+          {download}
         </SocialIconsContainer>
       )}
     </Container>
