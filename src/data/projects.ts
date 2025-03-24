@@ -39,7 +39,7 @@ export const projectsData: Project[] = [
       "React Native, TypeScript, 98.6 SDK, Zendesk SDK, Kotlin, Swift, RESTful APIs, AWS: Lambda, Quicksight",
     previewImage1Url: "/images/here-health/here-health-preview-1.png",
     previewImage2Url: "/images/here-health/here-health-preview-2.png",
-    prevProject: undefined,
+    prevProject: "preventive-app",
     nextProject: "appointments-app",
   },
   {
@@ -85,11 +85,10 @@ export const projectsData: Project[] = [
         "noreferrer"
       ),
     buttonTitle: "DOWNLOAD APP",
-    skills:
-      "React Native, TypeScript, Protobuf, AWS: Lambda",
+    skills: "React Native, TypeScript, Protobuf, AWS: Lambda",
     previewImage1Url: "/images/preventive-care/preventive-care-preview-1.png",
     previewImage2Url: "/images/preventive-care/preventive-care-preview-2.png",
     prevProject: "appointments-app",
-    nextProject: undefined,
+    nextProject: "here-health-app",
   },
 ];
