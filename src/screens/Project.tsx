@@ -1,5 +1,4 @@
 import { ProjectMobileView } from "../responsiveViews/mobile/ProjectMobileView";
-import { ProtfolioMobileView } from "../responsiveViews/mobile/ProtfolioMobileView";
 import { ProjectTabletView } from "../responsiveViews/web/ProjectTabletView";
 import { ProjectWebView } from "../responsiveViews/web/ProjectWebView";
 import useCheckDeviceScreen from "../utils/useCheckDeviceScreen";

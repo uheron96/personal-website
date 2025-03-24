@@ -55,36 +55,3 @@ const ButtonText = styled.div`
   letter-spacing: 0.3em;
   text-align: center;
 `;
-
-const ImageContainer = styled.div<{ disabled?: boolean; narrow?: boolean }>`
-  background-color: ${({ disabled }) =>
-    disabled ? "var(--gray)" : "var(--gray-dark-blue)"};
-  height: ${({ narrow }) => (narrow ? "5vh" : "7vh")};
-  width: 7vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ${Container}:hover & {
-    background-color: ${({ disabled }) =>
-      disabled ? "var(--gray)" : "var(--dark-green)"};
-  }
-`;
-
-const DownArrowsImage = styled.div<{ disabled?: boolean }>`
-  width: 1.5em;
-  height: 1.5em;
-  background-color: ${({ disabled }) =>
-    disabled ? "var(--dark-green)" : "var(--base-color)"};
-  mask-image: url("/svg/down-arrows.svg");
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  -webkit-mask-image: url("/svg/down-arrows.svg");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-
-  ${Container}:hover & {
-    background-color: ${({ disabled }) =>
-      disabled ? "var(--dark-green)" : "var(--base-color)"};
-  }
-`;

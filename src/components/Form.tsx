@@ -4,6 +4,7 @@ import { Input } from "./Input";
 import { useState } from "react";
 import { PrimaryButton } from "./PrimaryButton";
 import { MessageInput } from "./MessageInput";
+import { Message } from "./Message";
 
 type FormDataType = {
   name: string;
@@ -13,6 +14,11 @@ type FormDataType = {
 
 export const Form = () => {
   const [loadingSubmission, setLoadingSubmission] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [response, setResponse] = useState<{
+    message: string;
+    success: boolean;
+  } | null>(null);
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
@@ -67,13 +73,17 @@ export const Form = () => {
     });
 
     if (response.ok) {
-      alert("Message sent successfully!");
+      setResponse({ success: true, message: "Message sent successfully!" });
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
     } else {
-      alert("Failed to send message. Try again later.");
+      setResponse({
+        success: false,
+        message: "Something went wrong. Please try again!",
+      });
     }
 
+    setShowMessage(true);
     setLoadingSubmission(false);
   };
 
@@ -135,6 +145,15 @@ export const Form = () => {
           disabled={loadingSubmission}
         />
       </ButtonContainer>
+
+      {showMessage && response && (
+        <MessageContainer>
+          <Message
+            type={response?.success ? "success" : "failure"}
+            onClose={() => setShowMessage(false)}
+          />
+        </MessageContainer>
+      )}
     </Container>
   );
 };
@@ -144,6 +163,7 @@ const Container = styled.form`
   flex-direction: column;
   gap: 1em;
   width: 100%;
+  position: relative;
 `;
 
 const InputContainer = styled.div`
@@ -156,4 +176,22 @@ const ButtonContainer = styled.div`
   width: 60%;
   padding-top: 1em;
   padding-bottom: 2em;
+`;
+
+const MessageContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  padding: 2em;
+  border-radius: 8px;
+  background-color: var(--base-color);
+  box-shadow: 0 10px 6px var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.95;
 `;
