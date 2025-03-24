@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Text } from "./Text";
 import { ChangeEvent } from "react";
 
 type InputProps = {

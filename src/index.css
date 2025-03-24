@@ -11,6 +11,8 @@
   --dark-gray: rgb(165, 165, 165);
   --gray-font: rgb(96, 94, 94);
   --red: rgb(156, 40, 40);
+  --opaque-red: rgba(156, 40, 40, 0.103);
+  --opaque-green: rgba(95, 180, 162, 0.431);
 
   --display-font: "Ibarra Real Nova";
   --body-font: "Public Sans Regular";

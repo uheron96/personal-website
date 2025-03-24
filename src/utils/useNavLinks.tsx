@@ -132,6 +132,7 @@ const LogoWithNameImage = styled.img`
   width: clamp(6em, 10vw, 10em);
   height: auto;
   margin-right: auto;
+  cursor: pointer;
 `;
 
 const LogoImage = styled.div`
