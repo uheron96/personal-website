@@ -10,29 +10,30 @@ export const PortfolioWebView = () => {
   let i = 0;
 
   return (
-    <Container>
-      <Header />
+    <>
+      <Container>
+        <Header />
 
-      <Inner>
-        {projectsData.map((project) => {
-          i++;
-          return (
-            <Section
-              wideImage
-              reverseLayout={!!(i % 2)}
-              id={project.id}
-              buttonTitle="VIEW PROJECT"
-              imageSrc={project.imageUrl}
-              onClick={() => navigate(`/project/${project.id}`)}
-              paragraph={project.description}
-              title={project.title}
-            />
-          );
-        })}
-      </Inner>
-
+        <Inner>
+          {projectsData.map((project) => {
+            i++;
+            return (
+              <Section
+                wideImage
+                reverseLayout={!!(i % 2)}
+                id={project.id}
+                buttonTitle="VIEW PROJECT"
+                imageSrc={project.imageUrl}
+                onClick={() => navigate(`/project/${project.id}`)}
+                paragraph={project.description}
+                title={project.title}
+              />
+            );
+          })}
+        </Inner>
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 };
 
