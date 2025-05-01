@@ -14,52 +14,66 @@ export const ProjectWebView = () => {
   if (!currentProject) return <></>;
 
   return (
-    <Container>
-      <Header />
-      <ImageContainer>
-        <HeaderImage src={currentProject.narrowImage} />
-        <TitleContainer themeColor={currentProject.themeColor}>
-          <Text type="Header">{currentProject.title}</Text>
-          <Text type="Subtitle">{currentProject.subtitle}</Text>
-        </TitleContainer>
-      </ImageContainer>
-      <Inner>
-        <InfoLeft>
-          <Section
-            subtitle="Summary"
-            id={currentProject.id}
-            paragraph={currentProject.description}
-            skillsDesciption={currentProject.skills}
-            buttonTitle={currentProject.buttonTitle}
-            onClick={currentProject.buttonAction}
+    <>
+      <Container>
+        <Header />
+        <Content>
+          <ImageContainer>
+            <HeaderImage src={currentProject.narrowImage} />
+            <TitleContainer themeColor={currentProject.themeColor}>
+              <Text type="Header">{currentProject.title}</Text>
+              <Text type="Subtitle">{currentProject.subtitle}</Text>
+            </TitleContainer>
+          </ImageContainer>
+          <Inner>
+            <InfoLeft>
+              <Section
+                subtitle="Summary"
+                id={currentProject.id}
+                paragraph={currentProject.description}
+                skillsDesciption={currentProject.skills}
+                buttonTitle={currentProject.buttonTitle}
+                onClick={currentProject.buttonAction}
+              />
+            </InfoLeft>
+            <InfoRight>
+              <Section
+                subtitle="Project Background"
+                id={currentProject.id}
+                paragraph={currentProject.backgroundDescription}
+              />
+            </InfoRight>
+          </Inner>
+          <PreviewsContainer>
+            <PreviewImage src={currentProject.previewImage1Url} />
+            <PreviewImage src={currentProject.previewImage2Url} />
+          </PreviewsContainer>
+        </Content>
+        <ProjectsFooterContainer>
+          <ProjectsFooter
+            nextProjectId={currentProject.nextProject}
+            prevProjectId={currentProject.prevProject}
           />
-        </InfoLeft>
-        <InfoRight>
-          <Section
-            subtitle="Project Background"
-            id={currentProject.id}
-            paragraph={currentProject.backgroundDescription}
-          />
-        </InfoRight>
-      </Inner>
-      <PreviewsContainer>
-        <PreviewImage src={currentProject.previewImage1Url} />
-        <PreviewImage src={currentProject.previewImage2Url} />
-      </PreviewsContainer>
-
-      <ProjectsFooterContainer>
-        <ProjectsFooter
-          nextProjectId={currentProject.nextProject}
-          prevProjectId={currentProject.prevProject}
-        />
-      </ProjectsFooterContainer>
-
+        </ProjectsFooterContainer>
+      </Container>
       <Footer />
-    </Container>
+    </>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 2em 2em;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+`;
 
 const Inner = styled.div`
   display: flex;
@@ -110,7 +124,7 @@ const TitleContainer = styled.div<{ themeColor: string }>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 20%;
+  left: 10%;
   top: 40%;
   bottom: 4em;
   gap: 0.5em;
@@ -125,4 +139,5 @@ const PreviewsContainer = styled.div`
   height: 100%;
   margin-top: 2em;
   padding-top: 2em;
+  gap: 1em;
 `;

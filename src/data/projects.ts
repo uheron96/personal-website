@@ -18,6 +18,26 @@ type Project = {
 
 export const projectsData: Project[] = [
   {
+    title: "CI/CD",
+    subtitle: "Mobile Deployment",
+    imageUrl: "/images/cicd/cicd-main.png",
+    narrowImage: "/images/cicd/cicd-header.png",
+    id: "ci-cd-mobile-deployment",
+    themeColor: "F6EDEC",
+    backgroundDescription:
+      "This project implements a comprehensive release management system for mobile applications (iOS/Android) using GitHub Actions. The system automatically triggers production releases either on a bi-weekly schedule or via manual dispatch, handling version bumps (major/minor/patch) and creating GitHub releases. When tags are pushed, it generates platform-specific release branches (release/ios and release/android). A separate OTA update workflow allows targeted code pushes to specific app versions, automatically incrementing OTA version tags and notifying teams via Slack. The system enforces branch protection rules (only allowing OTA updates from specific branches) and maintains concurrency control to prevent duplicate releases. Key technical aspects include tag-based triggers, PAT-authenticated Git operations, version string parsing, and integration with both GitHub's release system and Slack for deployment notifications. The workflows demonstrate advanced GitHub Actions patterns including reusable workflows, job dependencies, output passing between jobs, and conditional execution based on multiple factors (branch patterns, schedule timing, and manual inputs)",
+    description:
+      "Mobile app release management system with automated versioning, production branch creation, and over-the-air (OTA) updates. Built with GitHub Actions, the platform handles mobile production releases on schedule, enables easy OTA deployments, and enables team builds distribution via with Slack notifications with build links.",
+    buttonAction: () => {},
+    buttonTitle: "",
+    skills:
+      "GitHub Actions, CI/CD Pipeline Design, Fastlane, Release Management, Version Control, Bash, Slack API Integration",
+    previewImage1Url: "/images/cicd/cicd-preview-1.png",
+    previewImage2Url: "/images/cicd/cicd-preview-2.png",
+    prevProject: undefined,
+    nextProject: "here-health-app",
+  },
+  {
     title: "Here Health",
     subtitle: "Froedtert & MCW",
     imageUrl: "/images/here-health/here-health-main.png",
@@ -39,7 +59,7 @@ export const projectsData: Project[] = [
       "React Native, TypeScript, 98.6 SDK, Zendesk SDK, Kotlin, Swift, RESTful APIs, AWS: Lambda, Quicksight",
     previewImage1Url: "/images/here-health/here-health-preview-1.png",
     previewImage2Url: "/images/here-health/here-health-preview-2.png",
-    prevProject: "preventive-app",
+    prevProject: "ci-cd-mobile-deployment",
     nextProject: "appointments-app",
   },
   {
@@ -89,6 +109,6 @@ export const projectsData: Project[] = [
     previewImage1Url: "/images/preventive-care/preventive-care-preview-1.png",
     previewImage2Url: "/images/preventive-care/preventive-care-preview-2.png",
     prevProject: "appointments-app",
-    nextProject: "here-health-app",
+    nextProject: undefined,
   },
 ];

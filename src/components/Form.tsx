@@ -5,7 +5,6 @@ import { useState } from "react";
 import { PrimaryButton } from "./PrimaryButton";
 import { MessageInput } from "./MessageInput";
 import { Message } from "./Message";
-import posthog from "posthog-js";
 
 type FormDataType = {
   name: string;
@@ -44,7 +43,6 @@ export const Form = () => {
   };
 
   const handleSubmit = async (e?: React.FormEvent) => {
-    posthog.capture("attempted_contact_form_submission");
     setLoadingSubmission(true);
     e && e.preventDefault();
 
@@ -75,13 +73,10 @@ export const Form = () => {
     });
 
     if (response.ok) {
-      posthog.capture("contact_form_submission_success");
-
       setResponse({ success: true, message: "Message sent successfully!" });
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
     } else {
-      posthog.capture("contact_form_submission_failure");
       setResponse({
         success: false,
         message: "Something went wrong. Please try again!",

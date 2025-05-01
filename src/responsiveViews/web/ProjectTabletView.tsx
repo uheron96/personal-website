@@ -28,13 +28,17 @@ export const ProjectTabletView = () => {
         <ProjectInfo>
           <InfoLeft>
             <Text type="Subtitle">Skills</Text>
-            <Text type="Highlight" highlightColor="green">{currentProject?.skills}</Text>
-            <ButtonContainer>
-              <SecondaryButton
-                title={currentProject.buttonTitle}
-                onClick={currentProject.buttonAction}
-              />
-            </ButtonContainer>
+            <Text type="Highlight" highlightColor="green">
+              {currentProject?.skills}
+            </Text>
+            {currentProject?.buttonAction && currentProject?.buttonTitle && (
+              <ButtonContainer>
+                <SecondaryButton
+                  title={currentProject.buttonTitle}
+                  onClick={currentProject.buttonAction}
+                />
+              </ButtonContainer>
+            )}
           </InfoLeft>
           <InfoRight>
             <Text type="Subtitle">Overview</Text>
@@ -118,7 +122,7 @@ const TitleContainer = styled.div<{ themeColor: string }>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 20%;
+  left: 10%;
   top: 40%;
   bottom: 4em;
   gap: 0.5em;
